@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: concept_accounts_aws.html 
+keywords: cloud provider accounts, aws, aws accounts, keys, multiple accounts, permissions, aws permissions, policy, policies, json 
+summary: Mit Cloud Manager können Sie das AWS Konto auswählen, in dem Sie ein Cloud Volumes ONTAP System implementieren möchten. Sie können alle Ihre Cloud Volumes ONTAP Systeme über das erste AWS Konto oder weitere Konten einrichten. 
+---
+= AWS Konten und Berechtigungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit Cloud Manager können Sie das AWS Konto auswählen, in dem Sie ein Cloud Volumes ONTAP System implementieren möchten. Sie können alle Ihre Cloud Volumes ONTAP Systeme über das erste AWS Konto oder weitere Konten einrichten.
+
+
+
+== Über das erste AWS Konto
+
+Wenn Sie Cloud Manager über NetApp Cloud Central implementieren, müssen Sie ein AWS Konto mit Berechtigungen zum Starten der Cloud Manager Instanz verwenden. Die erforderlichen Berechtigungen werden im aufgeführt https://mysupport.netapp.com/cloudontap/iampolicies["NetApp Cloud Central-Richtlinie für AWS"^].
+
+Wenn Cloud Central die Cloud Manager Instanz in AWS startet, wird eine IAM-Rolle und ein Instanzprofil für die Instanz erstellt. Zudem wird eine Richtlinie angehängt, die Cloud Manager Berechtigungen für die Implementierung und das Management von Cloud Volumes ONTAP in diesem AWS-Konto bereitstellt. link:reference_permissions.html#what-cloud-manager-does-with-aws-permissions["Überprüfen Sie, wie Cloud Manager die Berechtigungen verwendet"].
+
+image:diagram_permissions_initial_aws.png["Ein Konzept-Image, das Cloud Central zeigt, das Cloud Manager in einem AWS Konto implementiert Eine IAM-Richtlinie wird einer IAM-Rolle zugewiesen, die mit der Cloud Manager-Instanz verbunden ist."]
+
+Cloud Manager wählt bei der Erstellung einer neuen Arbeitsumgebung standardmäßig dieses Cloud-Provider-Konto aus:
+
+image:screenshot_accounts_select_aws.gif["Ein Screenshot, in dem die Option Konto wechseln auf der Seite Details  Credentials angezeigt wird."]
+
+
+
+== Weitere AWS Konten
+
+Wenn Sie Cloud Volumes ONTAP in verschiedenen AWS Accounts starten möchten, haben Sie eine der Möglichkeiten link:task_adding_aws_accounts.html["AWS Schlüssel für einen IAM-Benutzer oder den ARN einer Rolle in einem vertrauenswürdigen Konto bereitstellen"]. Die folgende Abbildung zeigt zwei zusätzliche Konten: Eines mit Berechtigungen über eine IAM-Rolle in einem vertrauenswürdigen Konto und ein weiteres über die AWS Schlüssel eines IAM-Benutzers:
+
+image:diagram_permissions_multiple_aws.png["Ein Konzept-Image, das zwei zusätzliche Konten enthält. Jeder hat eine IAM-Richtlinie, eine ist mit dem IAM-Benutzer verbunden, die andere mit einer IAM-Rolle verbunden."]
+
+Das würden Sie dann tun link:task_adding_aws_accounts.html#adding-aws-accounts-to-cloud-manager["Fügen Sie die Cloud-Provider-Konten zu Cloud Manager hinzu"] Indem Sie den Amazon Resource Name (ARN) der IAM-Rolle oder die AWS-Schlüssel für den IAM-Benutzer angeben.
+
+Nachdem Sie ein weiteres Konto hinzugefügt haben, können Sie zu diesem wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:
+
+image:screenshot_accounts_switch_aws.gif["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]
+
+.Wie sieht es mit Marketplace-Implementierungen und On-Premises-Implementierungen aus?
+****
+In den obigen Abschnitten wird die empfohlene Implementierungsmethode von NetApp Cloud Central beschrieben. Sie können Cloud Manager auch in AWS über die implementieren link:task_launching_aws_mktp.html["AWS Marketplace"] Und das können Sie auch link:task_installing_linux.html["Installation von Cloud Manager vor Ort"].
+
+Wenn Sie den Marktplatz nutzen, werden Berechtigungen auf die gleiche Weise bereitgestellt. Sie müssen lediglich die IAM-Rolle manuell erstellen und einrichten und dann Berechtigungen für weitere Konten bereitstellen.
+
+Bei On-Premises-Implementierungen können nicht eine IAM-Rolle für das Cloud Manager-System eingerichtet werden, Sie können aber Berechtigungen wie bei zusätzlichen AWS-Konten bereitstellen.
+
+****

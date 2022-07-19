@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: task_manage_cvs_aws.html 
+keywords: cloud volumes service for aws, cloud volumes, create cloud volumes, discover cloud volumes service for aws, delete cloud volumes, cloud volumes service subscription, discover cloud volumes service subscription, access key, secret key, discover region, service level, allowed clients 
+summary: Mit Cloud Manager können Sie die NFS Cloud Volumes in Ihrem Abonnement von Cloud Volumes Service für AWS erkennen. Nach der Bestandsaufnahme können Sie zusätzliche NFS Cloud Volumes direkt aus Cloud Manager hinzufügen. 
+---
+= Management von Cloud Volumes Service für AWS
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager ermöglicht es Ihnen, die NFS Cloud Volumes in Ihrer Erkennung zu erkennen https://cloud.netapp.com/cloud-volumes-service-for-aws["Cloud Volumes Service für AWS"^] Abonnement: Nach der Bestandsaufnahme können Sie zusätzliche NFS Cloud Volumes direkt aus Cloud Manager hinzufügen.
+
+
+NOTE: Cloud Manager unterstützt keine SMB- oder Dual-Protokoll-Volumes mit Cloud Volumes Service für AWS.
+
+
+
+== Bevor Sie beginnen
+
+* Cloud Manager ermöglicht die Erkennung von vorhandenen_ Cloud Volumes Service für AWS Abonnements. Siehe https://docs.netapp.com/us-en/cloud_volumes/aws/media/cvs_aws_account_setup.pdf["NetApp Cloud Volumes Service für AWS – Account Setup Guide"^] Wenn Sie Ihr Abonnement noch nicht eingerichtet haben.
++
+Sie müssen diesen Setup-Prozess für jede Region befolgen und Ihr erstes Volume über Cloud Volumes Service bereitstellen, bevor Sie die Region in Cloud Manager ermitteln können.
+
+* Sie benötigen den API-Schlüssel und den geheimen Schlüssel von Cloud Volumes, damit Sie sie an Cloud Manager bereitstellen können. https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["Weitere Anweisungen finden Sie in der Dokumentation zu AWS in Cloud Volumes Service"^].
+
+
+
+
+== Abonnement von Cloud Volumes Service für AWS erkennen
+
+Zunächst müssen Sie die Cloud Volumes in einer AWS Region erkennen. Sie können später weitere Regionen entdecken.
+
+.Schritte
+. Klicken Sie auf der Seite Arbeitsumgebungen auf *Entdecken*.
+. Wählen Sie *Cloud Volumes Service für AWS* aus.
++
+image:screenshot_discover.gif["Ein Screenshot, der die Seite Discover in Cloud Manager zeigt, mit der Sie ein ONTAP Cluster, ein Cloud Volumes ONTAP System oder die Cloud Volumes in einem Abonnement von Cloud Volumes Service für AWS erkennen können."]
+
+. Stellen Sie Informationen zu Ihrem Cloud Volumes Service Abonnement bereit:
++
+.. Wählen Sie die Region von AWS aus, in der sich Ihre Cloud Volumes befinden.
+.. Geben Sie den API-Schlüssel und den geheimen Schlüssel von Cloud Volumes ein. https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["Weitere Anweisungen finden Sie in der Dokumentation zu AWS in Cloud Volumes Service"^].
+.. Klicken Sie Auf *Go*.
++
+image:screenshot_cvs_aws_details.gif["Ein Screenshot der Seite Cloud Volumes Service Details, auf der Sie Ihre Konfiguration ermitteln können. Es enthält drei Felder: AWS Region, Zugriffsschlüssel und geheimen Schlüssel."]
+
+
+
+
+
+Cloud Manager sollte jetzt Ihre Cloud Volumes Service für AWS Konfiguration auf der Seite Arbeitsumgebungen anzeigen.
+
+image:screenshot_cvs_aws_cloud.gif["Einen Screenshot von Cloud Volumes Service für AWS auf der Seite „Arbeitsumgebungen“."]
+
+
+
+== Entdecken weiterer Regionen
+
+Wenn Cloud Volumes in zusätzlichen Regionen vorhanden sind, müssen Sie jede einzelne Region ermitteln.
+
+.Schritte
+. Wählen Sie auf der Seite Arbeitsumgebungen die Arbeitsumgebung aus (öffnen Sie sie jedoch nicht durch Doppelklicken).
+. Klicken Sie im rechten Fensterbereich auf *Cloud Volumes Service in einer anderen Region*.
++
+image:screenshot_cvs_discover_region.gif["Ein Screenshot mit der Option „Cloud Volumes Service in einer anderen Region entdecken“. Dieses Fenster wird geöffnet, wenn Sie eine Arbeitsumgebung auswählen."]
+
+. Stellen Sie Informationen zu Ihrem Cloud Volumes Service Abonnement bereit:
++
+.. Wählen Sie die Region von AWS aus, in der sich Ihre Cloud Volumes befinden.
+.. Geben Sie den API-Schlüssel und den geheimen Schlüssel von Cloud Volumes ein. https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["Weitere Anweisungen finden Sie in der Dokumentation zu AWS in Cloud Volumes Service"^].
+.. Klicken Sie Auf *Go*.
+
+
+
+
+Cloud Manager ermittelt Informationen zu Cloud Volumes in der ausgewählten Region.
+
+
+
+== Erstellung von Cloud Volumes
+
+Cloud Manager ermöglicht die Erstellung von NFSv3 Cloud Volumes. Cloud Volumes lassen sich nur mit einer Richtlinie für eine anfängliche Größe und einen einzelnen Export erstellen. Das Volume muss über die Benutzeroberfläche des Cloud Volume Service bearbeitet werden.
+
+. Öffnen Sie die Arbeitsumgebung.
+. Klicken Sie Auf *Neues Volume Hinzufügen*.
+. Geben Sie Details zum Volume ein:
++
+.. Geben Sie einen Namen für das Volume ein.
+.. Geben Sie eine Größe im Bereich von 100 gib bis 90,000 gib an (entspricht 88 TIBS).
++
+
+NOTE: Cloud Manager zeigt Volumes in gib an, während auf der Cloud Volumes Service Volumes in GB angezeigt werden.
+
+.. Geben Sie ein Service-Level an: Standard, Premium oder Extreme.
++
+https://docs.netapp.com/us-en/cloud_volumes/aws/reference_selecting_service_level_and_quota.html#service-levels["Erfahren Sie mehr über diese Service Levels"^].
+
+.. Wählen Sie eine Region. Sie können das Volume in einer Region erstellen, die Cloud Manager erkannt hat.
+.. Beschränken Sie den Client-Zugriff, indem Sie eine IP-Adresse oder ein Classless Inter-Domain Routing (CIDR) angeben.
++
+image:screenshot_cvs_aws_add_volume.gif["Ein Screenshot des Bildschirms „Neues Volume hinzufügen“ für Cloud Volumes Service für AWS"]
+
+
+
+. Klicken Sie Auf *Go*.
+
+
+
+
+== Cloud Volumes werden gelöscht
+
+Löschen der nicht mehr benötigten Cloud-Volumes
+
+.Schritte
+. Öffnen Sie die Arbeitsumgebung.
+. Bewegen Sie den Mauszeiger über die Lautstärke, und klicken Sie auf das Menü. Klicken Sie Auf *Löschen*.
++
+image:screenshot_cvs_aws_menu.gif["Ein Screenshot, der ein Volume anzeigt, das Menü, das oben rechts verfügbar ist, und zwei Optionen: Info und Löschen."]
+
+. Bestätigen Sie, dass Sie das Volume löschen möchten.
+
+
+
+
+== Hilfe wird abgerufen
+
+Nutzen Sie den Cloud Manager Chat für allgemeine Servicefragen.
+
+Bei technischen Support-Problemen im Zusammenhang mit Ihren Cloud Volumes verwenden Sie die 20-stellige Seriennummer „930“ auf der Registerkarte „Support“ der Cloud Volumes Service-Benutzeroberfläche. Verwenden Sie diese Support-ID, wenn Sie ein Web-Ticket öffnen oder Support-Anfrage stellen. Achten Sie darauf, Ihre Cloud Volumes Service Seriennummer für Support über die Cloud Volumes Service Benutzeroberfläche zu aktivieren. https://docs.netapp.com/us-en/cloud_volumes/aws/task_activating_support_entitlement.html["Diese Schritte werden hier erläutert"^].
+
+
+
+== Einschränkungen
+
+* Cloud Manager unterstützt SMB Volumes oder Dual-Protokoll-Volumes nicht.
+* Cloud Volumes lassen sich nur mit einer Richtlinie für eine anfängliche Größe und einen einzelnen Export erstellen. Das Volume muss über die Benutzeroberfläche des Cloud Volume Service bearbeitet werden.
+* Cloud Manager bietet keine Unterstützung für die Datenreplizierung von oder zu einem Cloud Volumes Service für AWS Abonnement.
+* Das Entfernen des Cloud Volumes Service für AWS Abonnements aus Cloud Manager wird nicht unterstützt. Es sind keine Kosten für den Entdeckung einer Region von Cloud Manager anfallen.
+
+
+
+
+== Weiterführende Links
+
+* https://cloud.netapp.com/cloud-volumes-service-for-aws["NetApp Cloud Central: Cloud Volumes Service für AWS"^]
+* https://docs.netapp.com/us-en/cloud_volumes/aws/["NetApp Cloud Volumes Service für AWS – Dokumentation"^]
+

@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: task_adding_gcp_accounts.html 
+keywords: permissions, gcp, data tiering, tiering, setup, requirements, account for data tiering, account for tiering, interoperable, interoperability, interoperable storage access keys, access keys 
+summary: Um Daten-Tiering auf einem Cloud Volumes ONTAP System zu ermöglichen, ist das Hinzufügen eines Google Cloud Platform Kontos zu Cloud Manager erforderlich. Daten-Tiering verlagert selten genutzte Daten automatisch auf kostengünstigen Objekt-Storage, sodass Sie Speicherplatz auf dem primären Storage freigeben und den sekundären Storage reduzieren können. 
+---
+= Einrichten und Hinzufügen von GCP-Konten zu Cloud Manager
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie aktivieren möchten link:concept_data_tiering.html["Daten-Tiering"] Auf einem Cloud Volumes ONTAP System müssen Sie Cloud Manager mit einem Storage-Zugriffschlüssel für ein Servicekonto mit Storage-Admin-Berechtigungen bereitstellen. Cloud Manager verwendet die Zugriffssteuerung zum Einrichten und Managen eines Cloud Storage-Buckets für Daten-Tiering.
+
+
+
+== Einrichten eines Servicekontos und Zugriffsschlüssel für Google Cloud Storage
+
+Mithilfe eines Service-Kontos kann Cloud Manager Cloud Storage-Buckets authentifizieren und auf sie zugreifen, die für Daten-Tiering verwendet werden. Die Schlüssel sind erforderlich, damit Google Cloud Storage weiß, wer die Anfrage stellt.
+
+.Schritte
+. Öffnen Sie die GCP IAM-Konsole und https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role["Erstellen Sie ein Dienstkonto mit der Rolle Storage Admin"^].
++
+image:screenshot_gcp_service_account_role.gif["Ein Screenshot der GCP IAM-Konsole, der die Auswahl der Storage-Admin-Rolle für ein Service-Konto zeigt."]
+
+. Gehen Sie zu https://console.cloud.google.com/storage/settings["GCP-Speichereinstellungen"^].
+. Wenn Sie aufgefordert werden, wählen Sie ein Projekt aus.
+. Klicken Sie auf die Registerkarte *Interoperabilität*.
+. Falls Sie dies noch nicht getan haben, klicken Sie auf *Interoperabilitätszugriff aktivieren*.
+. Klicken Sie unter *Zugriffsschlüssel für Servicekonten* auf *Schlüssel für ein Servicekonto erstellen*.
+. Wählen Sie das Servicekonto aus, das Sie in Schritt 1 erstellt haben.
++
+image:screenshot_gcp_access_key.gif["Ein Screenshot der GCP-Storage-Konsole, der ein ausgewähltes Service-Konto für einen neuen Zugriffsschlüssel zeigt."]
+
+. Klicken Sie Auf *Schlüssel Erstellen*.
+. Kopieren Sie den Zugriffsschlüssel und den Schlüssel.
++
+Sie müssen diese Informationen in Cloud Manager eingeben, wenn Sie das GCP-Konto für das Daten-Tiering hinzufügen.
+
+
+
+
+
+== Hinzufügen eines GCP-Kontos zu Cloud Manager
+
+Nachdem Sie nun über einen Zugriffsschlüssel für ein Service-Konto verfügen, können Sie ihn dem Cloud Manager hinzufügen.
+
+.Schritte
+. Klicken Sie oben rechts in der Cloud Manager-Konsole auf das Symbol Einstellungen und wählen Sie *Cloud Provider & Support Accounts* aus.
++
+image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol „Einstellungen“ oben rechts in der Cloud Manager Konsole angezeigt wird."]
+
+. Klicken Sie auf *Neues Konto hinzufügen* und wählen Sie *GCP*.
+. Geben Sie den Zugriffsschlüssel und den Schlüssel für das Servicekonto ein.
++
+Mithilfe der Schlüssel kann Cloud Manager einen Cloud Storage-Bucket für das Daten-Tiering einrichten.
+
+. Bestätigen Sie, dass die Richtlinienanforderungen erfüllt wurden, und klicken Sie dann auf *Konto erstellen*.
+
+
+Sie können jetzt Daten-Tiering für einzelne Volumes aktivieren, wenn Sie sie erstellen, ändern oder replizieren. Weitere Informationen finden Sie unter link:task_tiering.html["Tiering inaktiver Daten in kostengünstigen Objektspeicher"].
+
+Bevor Sie jedoch das tun, stellen Sie sicher, dass das Subnetz, in dem sich Cloud Volumes ONTAP befindet, für privaten Google-Zugriff konfiguriert ist. Anweisungen finden Sie unter https://cloud.google.com/vpc/docs/configure-private-google-access["Google Cloud Documentation: Configuring Private Google Access"^].

@@ -1,0 +1,362 @@
+---
+sidebar: sidebar 
+permalink: task_controlling_private_data.html 
+keywords: personal files, personal data, sensitive personal files, sensitive personal data, health data, ethnic origin, political opinions, gdpr, email address, credit card, ip address, iban, national ID, identifier, sex, criminal, compliance, privacy 
+summary: Mehr Kontrolle über Ihre persönlichen Daten durch die Anzeige von Details zu den personenbezogenen Daten und vertraulichen personenbezogenen Daten in Ihrem Unternehmen. Auch die Kategorien und Dateitypen, die Cloud Compliance in Ihren Daten enthalten ist, können für Sie transparent dargestellt werden. 
+---
+= Mehr Transparenz und Kontrolle über private Daten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mehr Kontrolle über Ihre persönlichen Daten durch die Anzeige von Details zu den personenbezogenen Daten und vertraulichen personenbezogenen Daten in Ihrem Unternehmen. Auch die Kategorien und Dateitypen, die Cloud Compliance in Ihren Daten enthalten ist, können für Sie transparent dargestellt werden.
+
+
+
+== Persönliche Daten
+
+Cloud Compliance identifiziert automatisch bestimmte Wörter, Strings und Muster (Regex) in den Daten. Beispielsweise personenbezogene Daten (Personal Identification Information, PII), Kreditkartennummern, Sozialversicherungsnummern und Kontonummern.  of personal data,Die vollständige Liste finden Sie hier.
+
+Für einige Arten von personenbezogenen Daten verwendet Cloud Compliance die _Proximity-Validierung_, um die Ergebnisse zu validieren. Die Validierung erfolgt, indem ein oder mehrere vordefinierte Schlüsselwörter in der Nähe der gefundenen personenbezogenen Daten gesucht werden. Cloud Compliance identifiziert z. B. eine US-amerikanische Sozialversicherungsnummer (SSN) als SSN, wenn sie neben ihr ein Näherungswort sieht - zum Beispiel _SSN_ oder _Sozialversicherung_.  of personal data,Die Liste unten Zeigt an, wann Cloud Compliance die Näherungsüberprüfung verwendet.
+
+
+
+=== Anzeigen von Dateien mit persönlichen Daten
+
+.Schritte
+. Klicken Sie oben im Cloud Manager auf *Compliance*.
+. Laden Sie die Details zu einem der beiden wichtigsten Dateitypen direkt vom Hauptbildschirm herunter, oder klicken Sie auf *Alle anzeigen* und laden Sie dann die Liste für alle gefundenen persönlichen Datentypen herunter.
++
+image:screenshot_personal_files.gif["Ein Screenshot des Dialogfelds „persönliche Dateien“, in dem Sie auf die Schaltfläche „Download“ neben einem persönlichen Datentyp klicken können. Das Ergebnis ist eine CSV-Datei mit Details zu den Dateien."]
+
+
+
+
+
+=== Arten personenbezogener Daten
+
+Die in Dateien gefundenen personenbezogenen Daten können allgemeine personenbezogene Daten oder nationale Kennungen sein. In der dritten Spalte wird angegeben, ob Cloud Compliance verwendet wird  data,Prüfung der Nähe Zum Validieren seiner Ergebnisse für die Kennung.
+
+[cols="20,50,18"]
+|===
+| Typ | Kennung | Näherungsvalidierung? 
+
+
+.4+| Allgemein | E-Mail-Adresse | Nein 
+
+
+| Kreditkartennummer | Nein 
+
+
+| IBAN-Nummer (International Bank Account Number) | Nein 
+
+
+| IP-Adresse | Ja. 
+
+
+.27+| Nationale Kennungen | Belgischer Ausweis (Numero National) | Ja. 
+
+
+| Bulgarische ID (einheitliche Zivilnummer) | Ja. 
+
+
+| Zypern Steuernummer (TIC) | Ja. 
+
+
+| Dänische Steuernummer (HLW) | Ja. 
+
+
+| Estnische ID (Isikukood) | Ja. 
+
+
+| Finnische ID (Henkilötunnus) | Ja. 
+
+
+| Französische Steuernummer (SPI) | Ja. 
+
+
+| Steuernummer (Steuerliche Identifikationsnummer) | Ja. 
+
+
+| Ungarische Steuernummer (Adóazonosító jel) | Ja. 
+
+
+| Irish ID (PPS) | Ja. 
+
+
+| Israelische ID | Ja. 
+
+
+| Italienische ID (Codice Fisscale) | Ja. 
+
+
+| Lettische Steuernummer | Ja. 
+
+
+| Litauische ID (Asmens kodas) | Ja. 
+
+
+| Luxemburg-ID | Ja. 
+
+
+| Malta ID | Ja. 
+
+
+| Niederlande ID (BSN) | Ja. 
+
+
+| Polish Tax Identification Number | Ja. 
+
+
+| Portugiesische Steuernummer (NIF) | Ja. 
+
+
+| Rumänische Steuernummer | Ja. 
+
+
+| Slowakische Steuernummer | Ja. 
+
+
+| Slowenische Steuernummer | Ja. 
+
+
+| Südafrikanischer Ausweis | Ja. 
+
+
+| Spanische Steuernummer | Ja. 
+
+
+| Schwedische Steuernummer | Ja. 
+
+
+| GROSSBRITANNIEN Staatsversicherungsnummer (NINO) | Ja. 
+
+
+| USA Sozialversicherungsnummer (SSN) | Ja. 
+|===
+
+
+== Sensible persönliche Daten
+
+Cloud Compliance identifiziert automatisch spezielle Arten von sensiblen personenbezogenen Daten, wie sie in Datenschutzvorschriften wie z. B. definiert sind https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&from=EN#d1e2051-1-1["Artikel 9 und 10 der DSGVO"^]. Beispielsweise Informationen über die Gesundheit einer Person, ethnische Herkunft oder sexuelle Orientierung.  of sensitive personal data,Die vollständige Liste finden Sie hier.
+
+Cloud Compliance verwendet künstliche Intelligenz (KI), NLP (Natural Language Processing), maschinelles Lernen (ML) und Cognitive Computing (CC), um die Bedeutung des von ihm gescannten Inhalts zu verstehen, um Entitäten zu extrahieren und entsprechend zu kategorisieren.
+
+Beispielsweise ist eine sensitive DSGVO-Datenkategorie ethnisch Ursprungs. Aufgrund seiner NLP-Fähigkeiten kann Cloud Compliance den Unterschied zwischen einem Satz unterscheiden, der "George ist mexikanisch" (was auf sensible Daten wie in Artikel 9 der DSGVO angegeben), und "George isst mexikanisches Essen".
+
+
+NOTE: Nur Englisch wird beim Scannen sensibler personenbezogener Daten unterstützt. Support für weitere Sprachen wird später hinzugefügt.
+
+
+
+=== Anzeigen von Dateien mit vertraulichen persönlichen Daten
+
+.Schritte
+. Klicken Sie oben im Cloud Manager auf *Compliance*.
+. Laden Sie die Details zu einem der beiden wichtigsten Dateitypen direkt vom Hauptbildschirm herunter, oder klicken Sie auf *Alle anzeigen* und laden Sie dann die Liste für alle gefundenen sensiblen personenbezogenen Datentypen herunter.
++
+image:screenshot_sensitive_personal_files.gif["Ein Screenshot des Dialogfelds sensible persönliche Dateien, in dem Sie auf die Download-Schaltfläche neben einem persönlichen Datentyp klicken können. Das Ergebnis ist eine CSV-Datei mit Details zu den Dateien."]
+
+
+
+
+
+=== Arten sensibler personenbezogener Daten
+
+Folgende sensible personenbezogene Daten, die Cloud Compliance in Dateien finden kann:
+
+Referenz Für Kriminelle Verfahren:: Daten zu strafrechtlichen Überzeugungen und Straftaten einer natürlichen Person.
+Ethnische Referenz:: Daten über die rassische oder ethnische Herkunft einer natürlichen Person.
+Systemzustand:: Daten über die Gesundheit einer natürlichen Person.
+Philosophische Überzeugungen Referenz:: Daten über die philosophischen Überzeugungen einer natürlichen Person.
+Religiöse Überzeugungen Referenz:: Daten über die religiösen Überzeugungen einer natürlichen Person.
+Sexualleben oder Orientierung Referenz:: Daten über das Sexualleben einer natürlichen Person oder die sexuelle Orientierung.
+
+
+
+
+== Kategorien
+
+Bei Cloud Compliance werden die gescannten Daten in verschiedene Kategorien unterteilt. Kategorien sind Themen, die auf der KI-Analyse des Inhalts und der Metadaten jeder Datei basieren.  of categories,Siehe die Liste der Kategorien.
+
+Kategorien können Ihnen dabei helfen zu verstehen, was mit Ihren Daten passiert, indem Sie die Art der Informationen anzeigen, die Sie haben. Beispielsweise kann eine Kategorie wie Lebensläufe oder Mitarbeiterverträge sensible Daten enthalten. Beim Herunterladen des CSV-Berichts können Sie feststellen, dass Mitarbeiterverträge an einem nicht sicheren Ort gespeichert sind. Sie können das Problem dann beheben.
+
+
+NOTE: Nur Englisch wird für Kategorien unterstützt. Support für weitere Sprachen wird später hinzugefügt.
+
+
+
+=== Anzeigen von Dateien nach Kategorien
+
+.Schritte
+. Klicken Sie oben im Cloud Manager auf *Compliance*.
+. Laden Sie die Details für einen der 4 besten Dateitypen direkt vom Hauptbildschirm herunter, oder klicken Sie auf *Alle anzeigen* und laden Sie dann die Liste für eine der Kategorien herunter.
++
+image:screenshot_categories.gif["Ein Screenshot des Dialogfelds „Kategorien“, in dem Sie neben einer Kategorie auf die Schaltfläche „Download“ klicken können. Das Ergebnis ist eine CSV-Datei mit Details zu den Dateien in dieser Kategorie."]
+
+
+
+
+
+=== Arten von Kategorien
+
+Cloud Compliance kategorisiert Ihre Daten wie folgt:
+
+Finanzen::
++
+--
+* Bilanz
+* Bestellungen
+* Rechnungen
+* Vierteljährliche Berichte
+
+
+--
+HR::
++
+--
+* Hintergrundprüfung
+* Vergütungspläne
+* Mitarbeiterverträge
+* Mitarbeiterüberprüfung
+* Systemzustand
+* Wird Fortgesetzt
+
+
+--
+Legal::
++
+--
+* NDA
+* Verträge zwischen Anbietern und Kunden
+
+
+--
+Marketing::
++
+--
+* Kampagnen
+* Konferenzen
+
+
+--
+Betrieb::
++
+--
+* Audit-Berichte
+
+
+--
+Vertrieb::
++
+--
+* Aufträge
+
+
+--
+Services::
++
+--
+* RFI
+* AUSSCHREIBUNG
+* Schulung
+
+
+--
+Unterstützung::
++
+--
+* Reklamationen und Tickets
+
+
+--
+Andere::
++
+--
+* Archivdateien
+* Audio
+* CAD-Dateien
+* Codieren
+* Ausführbare Dateien
+* Bilder
+
+
+--
+
+
+
+
+== Dateitypen
+
+Cloud Compliance greift die gescannten Daten auf und legt sie nach Dateityp fest. Cloud Compliance kann alle Dateitypen anzeigen, die in den Scans gefunden werden.
+
+Die Überprüfung Ihrer Dateitypen kann Ihnen helfen, Ihre sensiblen Daten zu kontrollieren, da Sie möglicherweise feststellen können, dass bestimmte Dateitypen nicht richtig gespeichert sind. Sie können beispielsweise CAD-Dateien speichern, die sehr sensible Informationen über Ihr Unternehmen enthalten. Wenn diese nicht gesichert sind, können Sie die Kontrolle über vertrauliche Daten übernehmen, indem Sie Berechtigungen beschränken oder Dateien an einen anderen Speicherort verschieben.
+
+
+
+=== Anzeigen von Dateitypen
+
+.Schritte
+. Klicken Sie oben im Cloud Manager auf *Compliance*.
+. Laden Sie die Details für einen der 4 besten Dateitypen direkt vom Hauptbildschirm herunter, oder klicken Sie auf *Alle anzeigen* und laden Sie dann die Liste für einen beliebigen Dateityp herunter.
++
+image:screenshot_file_types.gif["Ein Screenshot des Dialogfelds Dateitypen, in dem Sie auf die Download-Schaltfläche neben einem Dateityp klicken können. Das Ergebnis ist eine CSV-Datei mit Details zu den Dateien."]
+
+
+
+
+
+== Genauigkeit der gefundenen Informationen
+
+NetApp kann keine Garantie für 100 % Genauigkeit der persönlichen Daten und für sensible personenbezogene Daten, die Cloud Compliance identifiziert hat, geben. Überprüfen Sie die Informationen immer, indem Sie die Daten überprüfen.
+
+Auf der Grundlage unserer Tests zeigt die folgende Tabelle die Richtigkeit der Informationen, die Cloud Compliance findet. Wir brechen es durch _Precision_ und _Recall_ ab:
+
+Präzision:: Die Wahrscheinlichkeit, dass das, was Cloud Compliance findet, korrekt identifiziert wurde. Beispielsweise bedeutet eine Datengenauigkeit von 90% für personenbezogene Daten, dass 9 von 10 Dateien, die als personenbezogene Daten identifiziert werden, tatsächlich personenbezogene Daten enthalten. 1 von 10 Dateien wäre falsch positiv.
+Rückruf:: Die Wahrscheinlichkeit, dass Cloud Compliance die entsprechenden Daten findet Beispielsweise bedeutet eine Rückrufquote von 70 % für personenbezogene Daten, dass Cloud Compliance 7 von 10 Dateien identifizieren kann, die tatsächlich personenbezogene Daten in Ihrem Unternehmen enthalten. Cloud Compliance würde 30% der Daten vermissen und wird nicht im Dashboard erscheinen.
+
+
+Cloud Compliance gibt es in einer Version mit kontrollierter Verfügbarkeit und wir verbessern kontinuierlich die Genauigkeit unserer Ergebnisse. Diese Verbesserungen werden in zukünftigen Versionen der Cloud-Compliance automatisch verfügbar sein.
+
+[cols="25,20,20"]
+|===
+| Typ | Präzision | Rückruf 
+
+
+| Personenbezogene Daten - Allgemeines | 90 % - 95 % | 60 % - 80 % 
+
+
+| Persönliche Daten – Länderkennungen | 30 % - 60 % | 40 % - 60 % 
+
+
+| Sensible persönliche Daten | 80 % - 95 % | 20 % - 30 % 
+
+
+| Kategorien | 90 % - 97 % | 60 % - 80 % 
+|===
+
+
+== Was ist in jedem Datei Liste Bericht enthalten (CSV-Datei)
+
+Über das Dashboard können Sie Dateilisten (im CSV-Format) mit Details zu den identifizierten Dateien herunterladen. Wenn es mehr als 10,000 Ergebnisse gibt, werden nur die 10,000 besten Ergebnisse in der Liste angezeigt (Unterstützung für weitere Ergebnisse wird später hinzugefügt).
+
+Jede Dateiliste enthält die folgenden Informationen:
+
+* Dateiname
+* Positionstyp
+* Standort
+* Dateipfad
+* Dateityp
+* Kategorie
+* Persönliche Angaben
+* Sensible persönliche Daten
+* Löscherkennung Datum
++
+Ein Löscherkennungsdatum gibt das Datum an, an dem die Datei gelöscht oder verschoben wurde. So können Sie feststellen, wann sensible Dateien verschoben wurden. Gelöschte Dateien sind nicht Teil der Dateinummernanzahl, die im Dashboard angezeigt wird. Die Dateien werden nur in den CSV-Berichten angezeigt.
+
+

@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: task_generating_compliance_reports.html 
+keywords: report, privacy, risk, privacy risk assessment, compliance status, severity, compliance, privacy risk, data subjects, privacy 
+summary: Der Datenschutzrisiko-Assessment-Bericht bietet einen Überblick über den Datenschutzrisikostatus Ihres Unternehmens. Erstellen Sie den Bericht und senden Sie ihn an andere Gruppen in Ihrem Unternehmen, darunter Führungskräfte, Compliance-Teams und Rechtsabteilung. 
+---
+= Lesen des Datenschutzrisikobewertungsberichts
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Datenschutzrisiko-Assessment-Bericht bietet einen Überblick über den Datenschutzrisikostatus Ihres Unternehmens, wie dies durch Datenschutzvorschriften wie DSGVO und CCPA erforderlich ist.
+
+
+NOTE: NetApp kann keine Garantie für 100 % Genauigkeit der persönlichen Daten und für sensible personenbezogene Daten, die Cloud Compliance identifiziert hat, geben. Überprüfen Sie die Informationen immer, indem Sie die Daten überprüfen.
+
+Der Bericht enthält die folgenden Informationen:
+
+Compliance-Status:: Ein Wert für den Schweregrad (weitere Informationen finden Sie unten) und die Verteilung von Daten, unabhängig davon, ob es sich um nicht-sensible, persönliche oder sensible Daten handelt.
+Assessment-Übersicht:: Eine Aufschlüsselung der gefundenen Arten von personenbezogenen Daten sowie der Kategorien von Daten.
+Betroffene in dieser Beurteilung:: Die Anzahl der Personen nach Ort, für die nationale Kennungen gefunden wurden.
+
+
+
+
+== Generieren des Datenschutzrisikobewertungsberichts
+
+Rufen Sie die Registerkarte Compliance auf, um den Bericht zu erstellen.
+
+.Schritte
+. Klicken Sie oben im Cloud Manager auf *Compliance*.
+. Klicken Sie unter *Reports* auf das Download-Symbol neben *Privacy Risk Assessment*.
++
+image:screenshot_privacy_risk_assessment.gif["Ein Screenshot der Registerkarte Compliance in Cloud Manager, in dem der Bereich „Berichte“ angezeigt wird, in dem Sie auf „Privacy Risk Assessment“ klicken können."]
+
+
+
+Cloud Compliance generiert einen PDF-Bericht, den Sie nach Bedarf prüfen und an andere Gruppen senden können.
+
+
+
+== Schweregrad
+
+Cloud Compliance berechnet den Schweregrad für den Privacy Risk Assessment-Bericht auf der Grundlage von drei Variablen:
+
+* Der Prozentsatz der personenbezogenen Daten aus allen Daten.
+* Der Prozentsatz sensibler personenbezogener Daten aus allen Daten.
+* Der Prozentsatz der Dateien, die betroffene Daten enthalten, die durch nationale Kennungen wie nationale IDs, Sozialversicherungsnummern und Steuerkennzahlen bestimmt werden.
+
+
+Die folgende Logik dient zur Ermittlung der Punktzahl:
+
+[cols="29,71"]
+|===
+| Schweregrad | Logik 
+
+
+| 0 | Alle drei Variablen sind genau 0% 
+
+
+| 1 | Eine der Variablen ist größer als 0 % 
+
+
+| 2 | Eine der Variablen ist größer als 3% 
+
+
+| 3 | Zwei der Variablen sind größer als 3% 
+
+
+| 4 | Drei der Variablen sind größer als 3 % 
+
+
+| 5 | Eine der Variablen ist größer als 6% 
+
+
+| 6 | Zwei der Variablen sind größer als 6% 
+
+
+| 7 | Drei der Variablen sind größer als 6% 
+
+
+| 8 | Eine der Variablen ist größer als 15% 
+
+
+| 9 | Zwei der Variablen sind größer als 15% 
+
+
+| 10 | Drei der Variablen sind größer als 15% 
+|===

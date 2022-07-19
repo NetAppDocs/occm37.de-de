@@ -1,0 +1,365 @@
+---
+sidebar: sidebar 
+permalink: reference_security_groups_azure.html 
+keywords: security group, security groups, rules, ports, azure, inbound, outbound, rules 
+summary: Cloud Manager erstellt Azure Sicherheitsgruppen, die die ein- und ausgehenden Regeln enthalten, die Cloud Manager und Cloud Volumes ONTAP für einen erfolgreichen Betrieb benötigen. Möglicherweise möchten Sie zu Testzwecken auf die Ports verweisen oder wenn Sie Ihre eigene verwenden müssen. 
+translate: false 
+---
+= Sicherheitsgruppenregeln für Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager erstellt Azure Sicherheitsgruppen, die die ein- und ausgehenden Regeln enthalten, die Cloud Manager und Cloud Volumes ONTAP für einen erfolgreichen Betrieb benötigen. Sie können die Ports zu Testzwecken oder zur Verwendung eigener Sicherheitsgruppen verwenden.
+
+
+
+== Regeln für Cloud Manager
+
+Für die Sicherheitsgruppe für Cloud Manager sind sowohl eingehende als auch ausgehende Regeln erforderlich.
+
+
+
+=== Eingehende Regeln für Cloud Manager
+
+Die Quelle für eingehende Regeln in der vordefinierten Sicherheitsgruppe ist 0.0.0.0/0.
+
+[cols="3*"]
+|===
+| Port | Protokoll | Zweck 
+
+
+| 22 | SSH | Bietet SSH-Zugriff auf den Cloud Manager-Host 
+
+
+| 80 | HTTP | Bietet HTTP-Zugriff von Client-Webbrowsern auf die Cloud Manager-Webkonsole 
+
+
+| 443 | HTTPS | Bietet HTTPS-Zugriff von Client-Webbrowsern auf die Cloud Manager-Webkonsole 
+|===
+
+
+=== Outbound-Regeln für Cloud Manager
+
+Die vordefinierte Sicherheitsgruppe für Cloud Manager öffnet den gesamten ausgehenden Datenverkehr. Wenn dies akzeptabel ist, befolgen Sie die grundlegenden Regeln für ausgehende Anrufe. Wenn Sie strengere Regeln benötigen, verwenden Sie die erweiterten Outbound-Regeln.
+
+
+
+==== Grundlegende Regeln für ausgehende Anrufe
+
+Die vordefinierte Sicherheitsgruppe für Cloud Manager enthält die folgenden ausgehenden Regeln.
+
+[cols="3*"]
+|===
+| Port | Protokoll | Zweck 
+
+
+| Alle | Alle TCP | Gesamter abgehender Datenverkehr 
+
+
+| Alle | Alle UDP-Protokolle | Gesamter abgehender Datenverkehr 
+|===
+
+
+==== Erweiterte Outbound-Regeln
+
+Wenn Sie starre Regeln für ausgehenden Datenverkehr benötigen, können Sie die folgenden Informationen verwenden, um nur die Ports zu öffnen, die für die ausgehende Kommunikation durch Cloud Manager erforderlich sind.
+
+
+NOTE: Die Quell-IP-Adresse ist der Cloud Manager-Host.
+
+[cols="5*"]
+|===
+| Service | Port | Protokoll | Ziel | Zweck 
+
+
+.9+| Active Directory | 88 | TCP | Active Directory-Gesamtstruktur | Kerberos V-Authentifizierung 
+
+
+| 139 | TCP | Active Directory-Gesamtstruktur | Sitzung für den NETBIOS-Dienst 
+
+
+| 389 | TCP | Active Directory-Gesamtstruktur | LDAP 
+
+
+| 445 | TCP | Active Directory-Gesamtstruktur | Microsoft SMB/CIFS über TCP mit NETBIOS-Framing 
+
+
+| 464 | TCP | Active Directory-Gesamtstruktur | Kerberos V Passwort ändern und festlegen (SET_CHANGE) 
+
+
+| 749 | TCP | Active Directory-Gesamtstruktur | Active Directory Kerberos V - Kennwort ändern und festlegen (RPCSEC_GSS) 
+
+
+| 137 | UDP | Active Directory-Gesamtstruktur | NetBIOS-Namensdienst 
+
+
+| 138 | UDP | Active Directory-Gesamtstruktur | Netbios Datagramm-Dienst 
+
+
+| 464 | UDP | Active Directory-Gesamtstruktur | Kerberos-Schlüsselverwaltung 
+
+
+| API-Aufrufe und AutoSupport | 443 | HTTPS | Outbound-Internet und ONTAP Cluster Management LIF | API-Aufrufe an AWS und ONTAP und Senden von AutoSupport Nachrichten an NetApp 
+
+
+| API-Aufrufe | 3000 | TCP | ONTAP Cluster Management LIF | API-Aufrufe für ONTAP 
+
+
+| DNS | 53 | UDP | DNS | Wird für die DNS-Auflösung durch Cloud Manager verwendet 
+|===
+
+
+== Regeln für Cloud Volumes ONTAP
+
+Die Sicherheitsgruppe für Cloud Volumes ONTAP erfordert sowohl eingehende als auch ausgehende Regeln.
+
+
+
+=== Eingehende Regeln für Single-Node-Systeme
+
+Die unten aufgeführten Regeln erlauben den Datenverkehr, es sei denn, die Beschreibung stellt fest, dass bestimmte eingehende Daten blockiert werden.
+
+[cols="4*"]
+|===
+| Priorität und Name | Port und Protokoll | Quelle und Ziel | Beschreibung 
+
+
+| 1000 Inbound_SSH | 22 TCP | Beliebige Art | SSH-Zugriff auf die IP-Adresse der Cluster Management LIF oder einer Node Management LIF 
+
+
+| 1001 Inbound_http | 80 TCP | Beliebige Art | HTTP-Zugriff auf die System Manager Webkonsole mit der IP-Adresse der Cluster-Management-LIF 
+
+
+| 1002 Inbound_111_tcp | 111 TCP | Beliebige Art | Remote-Prozeduraufruf für NFS 
+
+
+| 1003 Inbound_111_udp | 111 UDP | Beliebige Art | Remote-Prozeduraufruf für NFS 
+
+
+| 1004 eingehend_139 | 139 TCP | Beliebige Art | NetBIOS-Servicesitzung für CIFS 
+
+
+| 1005 Inbound_161-162 _tcp | 161-162 TCP | Beliebige Art | Einfaches Netzwerkverwaltungsprotokoll 
+
+
+| 1006 Inbound_161-162 _udp | 161-162 UDP | Beliebige Art | Einfaches Netzwerkverwaltungsprotokoll 
+
+
+| 1007 eingehend_443 | 443 TCP | Beliebige Art | HTTPS-Zugriff auf die System Manager-Webkonsole unter Verwendung der IP-Adresse der Cluster-Management-LIF 
+
+
+| 1008 eingehend_445 | 445 TCP | Beliebige Art | Microsoft SMB/CIFS über TCP mit NETBIOS-Framing 
+
+
+| 1009 Inbound_635_tcp | 635 TCP | Beliebige Art | NFS-Mount 
+
+
+| 1010 Inbound_635_udp | 635 UDP | Beliebige Art | NFS-Mount 
+
+
+| 1011 eingehend_749 | 749 TCP | Beliebige Art | Kerberos 
+
+
+| 1012 Inbound_2049_tcp | 2049 TCP | Beliebige Art | NFS-Server-Daemon 
+
+
+| 1013 Inbound_2049_udp | 2049 UDP | Beliebige Art | NFS-Server-Daemon 
+
+
+| 1014 eingehend_3260 | 3260 TCP | Beliebige Art | ISCSI-Zugriff über die iSCSI-Daten-LIF 
+
+
+| 1015 Inbound_4045-4046_tcp | 4045-4046 TCP | Beliebige Art | NFS Lock Daemon und Network Status Monitor 
+
+
+| 1016 Inbound_4045-4046_udp | 4045-4046 UDP | Beliebige Art | NFS Lock Daemon und Network Status Monitor 
+
+
+| 1017 eingehend_10000 | 10000 TCP | Beliebige Art | Backup mit NDMP 
+
+
+| 1018 eingehend_11104-11105 | 11104-11105 TCP | Beliebige Art | SnapMirror Datenübertragung 
+
+
+| 3000 Inbound_Deny_all_tcp | Alle TCP-Ports | Beliebige Art | Blockieren Sie den gesamten anderen TCP-eingehenden Datenverkehr 
+
+
+| 3001 Inbound_Deny_all_udp | Alle Ports UDP | Beliebige Art | Alle anderen UDP-eingehenden Datenverkehr blockieren 
+
+
+| 65000 AllowVnetInBound | Alle Ports und Protokolle | VirtualNetwork zu VirtualNetwork | Eingehender Verkehr aus dem vnet 
+
+
+| 65001 AllowAzureLoad BalancerInBound | Alle Ports und Protokolle | AzureLoadBalancer zu jedem | Datenverkehr vom Azure Standard Load Balancer 
+
+
+| 65500 DenyAllInBound | Alle Ports und Protokolle | Beliebige Art | Alle anderen eingehenden Datenverkehr blockieren 
+|===
+
+
+=== Eingehende Regeln für HA-Systeme
+
+Die unten aufgeführten Regeln erlauben den Datenverkehr, es sei denn, die Beschreibung stellt fest, dass bestimmte eingehende Daten blockiert werden.
+
+
+NOTE: HA-Systeme weisen weniger eingehende Regeln als Systeme mit einzelnen Nodes auf, da eingehender Datenverkehr durch den Azure Standard Load Balancer geleitet wird. Aus diesem Grund sollte der Verkehr aus dem Load Balancer geöffnet sein, wie in der Regel "AllowAzureLoadBalancerInBound" gezeigt.
+
+[cols="4*"]
+|===
+| Priorität und Name | Port und Protokoll | Quelle und Ziel | Beschreibung 
+
+
+| 100 eingehend_443 | 443 beliebiges Protokoll | Beliebige Art | HTTPS-Zugriff auf die System Manager-Webkonsole unter Verwendung der IP-Adresse der Cluster-Management-LIF 
+
+
+| 101 Inbound_111_tcp | 111 beliebiges Protokoll | Beliebige Art | Remote-Prozeduraufruf für NFS 
+
+
+| 102 Inbound_2049_tcp | 2049 beliebiges Protokoll | Beliebige Art | NFS-Server-Daemon 
+
+
+| 111 Inbound_SSH | 22 beliebiges Protokoll | Beliebige Art | SSH-Zugriff auf die IP-Adresse der Cluster Management LIF oder einer Node Management LIF 
+
+
+| 121 eingehend_53 | 53 beliebiges Protokoll | Beliebige Art | DNS und CIFS 
+
+
+| 65000 AllowVnetInBound | Alle Ports und Protokolle | VirtualNetwork zu VirtualNetwork | Eingehender Verkehr aus dem vnet 
+
+
+| 65001 AllowAzureLoad BalancerInBound | Alle Ports und Protokolle | AzureLoadBalancer zu jedem | Datenverkehr vom Azure Standard Load Balancer 
+
+
+| 65500 DenyAllInBound | Alle Ports und Protokolle | Beliebige Art | Alle anderen eingehenden Datenverkehr blockieren 
+|===
+
+
+=== Outbound-Regeln für Cloud Volumes ONTAP
+
+Die vordefinierte Sicherheitsgruppe für Cloud Volumes ONTAP öffnet den gesamten ausgehenden Datenverkehr. Wenn dies akzeptabel ist, befolgen Sie die grundlegenden Regeln für ausgehende Anrufe. Wenn Sie strengere Regeln benötigen, verwenden Sie die erweiterten Outbound-Regeln.
+
+
+
+==== Grundlegende Regeln für ausgehende Anrufe
+
+Die vordefinierte Sicherheitsgruppe für Cloud Volumes ONTAP enthält die folgenden ausgehenden Regeln.
+
+[cols="3*"]
+|===
+| Port | Protokoll | Zweck 
+
+
+| Alle | Alle TCP | Gesamter abgehender Datenverkehr 
+
+
+| Alle | Alle UDP-Protokolle | Gesamter abgehender Datenverkehr 
+|===
+
+
+==== Erweiterte Outbound-Regeln
+
+Wenn Sie strenge Regeln für ausgehenden Datenverkehr benötigen, können Sie mit den folgenden Informationen nur die Ports öffnen, die für die ausgehende Kommunikation durch Cloud Volumes ONTAP erforderlich sind.
+
+
+NOTE: Die Quelle ist die Schnittstelle (IP-Adresse) auf dem Cloud Volumes ONTAP System.
+
+[cols="10,10,10,20,20,40"]
+|===
+| Service | Port | Protokoll | Quelle | Ziel | Zweck 
+
+
+.18+| Active Directory | 88 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | Kerberos V-Authentifizierung 
+
+
+| 137 | UDP | Node Management-LIF | Active Directory-Gesamtstruktur | NetBIOS-Namensdienst 
+
+
+| 138 | UDP | Node Management-LIF | Active Directory-Gesamtstruktur | Netbios Datagramm-Dienst 
+
+
+| 139 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | Sitzung für den NETBIOS-Dienst 
+
+
+| 389 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | LDAP 
+
+
+| 445 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | Microsoft SMB/CIFS über TCP mit NETBIOS-Framing 
+
+
+| 464 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | Kerberos V Passwort ändern und festlegen (SET_CHANGE) 
+
+
+| 464 | UDP | Node Management-LIF | Active Directory-Gesamtstruktur | Kerberos-Schlüsselverwaltung 
+
+
+| 749 | TCP | Node Management-LIF | Active Directory-Gesamtstruktur | Kerberos V - Kennwort ändern und festlegen (RPCSEC_GSS) 
+
+
+| 88 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Kerberos V-Authentifizierung 
+
+
+| 137 | UDP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | NetBIOS-Namensdienst 
+
+
+| 138 | UDP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Netbios Datagramm-Dienst 
+
+
+| 139 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Sitzung für den NETBIOS-Dienst 
+
+
+| 389 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | LDAP 
+
+
+| 445 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Microsoft SMB/CIFS über TCP mit NETBIOS-Framing 
+
+
+| 464 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Kerberos V Passwort ändern und festlegen (SET_CHANGE) 
+
+
+| 464 | UDP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Kerberos-Schlüsselverwaltung 
+
+
+| 749 | TCP | Data LIF (NFS, CIFS) | Active Directory-Gesamtstruktur | Kerberos V - Passwort ändern und festlegen (RPCSEC_GSS) 
+
+
+| DHCP | 68 | UDP | Node Management-LIF | DHCP | DHCP-Client für die erstmalige Einrichtung 
+
+
+| DHCPS | 67 | UDP | Node Management-LIF | DHCP | DHCP-Server 
+
+
+| DNS | 53 | UDP | Node Management LIF und Daten LIF (NFS, CIFS) | DNS | DNS 
+
+
+| NDMP | 18600-18699 | TCP | Node Management-LIF | Zielserver | NDMP-Kopie 
+
+
+| SMTP | 25 | TCP | Node Management-LIF | Mailserver | SMTP-Warnungen können für AutoSupport verwendet werden 
+
+
+.4+| SNMP | 161 | TCP | Node Management-LIF | Server überwachen | Überwachung durch SNMP-Traps 
+
+
+| 161 | UDP | Node Management-LIF | Server überwachen | Überwachung durch SNMP-Traps 
+
+
+| 162 | TCP | Node Management-LIF | Server überwachen | Überwachung durch SNMP-Traps 
+
+
+| 162 | UDP | Node Management-LIF | Server überwachen | Überwachung durch SNMP-Traps 
+
+
+.2+| SnapMirror | 11104 | TCP | Intercluster-LIF | ONTAP Intercluster-LIFs | Management von interclusterübergreifenden Kommunikationssitzungen für SnapMirror 
+
+
+| 11105 | TCP | Intercluster-LIF | ONTAP Intercluster-LIFs | SnapMirror Datenübertragung 
+
+
+| Syslog | 514 | UDP | Node Management-LIF | Syslog-Server | Syslog-Weiterleitungsmeldungen 
+|===

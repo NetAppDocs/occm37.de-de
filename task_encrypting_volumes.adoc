@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: task_encrypting_volumes.html 
+keywords: encrypt, encryption, data, volumes, netapp volume encryption, volume encryption, nve, key managers, kmip, key management servers, license, ssl certificates 
+summary: NetApp Volume Encryption ist eine softwarebasierte Technologie zur Verschlüsselung von Daten im Ruhezustand für ein Volume gleichzeitig. Daten, Snapshot Kopien und Metadaten sind verschlüsselt. Der Zugriff auf die Daten erfolgt über einen eindeutigen XTS-AES-256-Schlüssel, einen pro Volume. 
+---
+= Verschlüsseln von Volumes mit NetApp Volume Encryption
+:toc: macro
+:hardbreaks:
+:allow-uri-read: 
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+NetApp Volume Encryption (NVE) ist eine softwarebasierte Technologie, mit der Daten im Ruhezustand um ein Volume gleichzeitig verschlüsselt werden. Daten, Snapshot Kopien und Metadaten sind verschlüsselt. Der Zugriff auf die Daten erfolgt über einen eindeutigen XTS-AES-256-Schlüssel, einen pro Volume.
+
+.Über diese Aufgabe
+* Ab Cloud Manager 3.7 wird auf jedem Cloud Volumes ONTAP System, das beim NetApp Support registriert ist, automatisch eine NetApp Volume Encryption Lizenz installiert.
++
+** link:task_adding_nss_accounts.html["Hinzufügen von NetApp Support Site Konten zu Cloud Manager"]
+** link:task_registering.html["Registrieren von Pay-as-you-go-Systemen"]
++
+
+NOTE: Cloud Manager installiert die NVE-Lizenz nicht auf Systemen, die sich in der Region China befinden.
+
+
+
+* Derzeit unterstützt Cloud Volumes ONTAP NetApp Volume Encryption mit einem externen Verschlüsselungsmanagement Server. Ein Onboard Key Manager wird nicht unterstützt.
+* Sie müssen NetApp Volume Encryption über die ONTAP CLI einrichten.
++
+Die Verschlüsselung für bestimmte Volumes kann dann entweder über die CLI oder mit System Manager aktiviert werden. Cloud Manager unterstützt NetApp Volume Encryption von seiner Benutzeroberfläche und seinen APIs nicht.
+
+
+
+link:concept_security.html["Erfahren Sie mehr über unterstützte Verschlüsselungstechnologien"].
+
+.Schritte
+. Überprüfen Sie die Liste der unterstützten Schlüsselmanager im http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^].
++
+
+TIP: Suchen Sie nach der *Key Manager*-Lösung.
+
+. link:task_connecting_to_otc.html["Stellen Sie eine Verbindung zur Cloud Volumes ONTAP-CLI her"^].
+. Installieren Sie SSL-Zertifikate und stellen Sie eine Verbindung zu den externen Schlüsselverwaltungsservern her.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-DD718B42-038D-4009-84FF-20BBD6530BC2.html["ONTAP 9 NetApp Verschlüsselungs-Leitfaden: Konfiguration externer Verschlüsselungsmanagement"^]
+
+. Erstellen Sie ein neues verschlüsseltes Volume oder konvertieren Sie ein vorhandenes unverschlüsseltes Volume mithilfe der CLI oder des System Manager.
++
+** CLI
++
+*** Verwenden Sie für neue Volumes den Befehl *Volume create* mit dem Parameter -crypt.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-A5D3FDEF-CA10-4A54-9E17-DB9E9954082E.html["ONTAP 9 NetApp Verschlüsselungs-Leitfaden: Verschlüsselung auf einem neuen Volume"^]
+
+*** Verwenden Sie für vorhandene Volumes den Befehl *Volume Encryption Conversion Start*.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1468CE48-A0D9-4D45-BF78-A11C26724051.html["ONTAP 9 NetApp Verschlüsselungs-Power Guide: Aktivierung der Verschlüsselung auf einem vorhandenen Volume mit dem Befehl zur Konvertierung der Volume-Verschlüsselung"^]
+
+
+
+** System Manager:
++
+*** Klicken Sie bei neuen Volumes auf *Speicherung > Volumes > Erstellen > FlexVol erstellen* und wählen Sie dann *verschlüsselt* aus.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help-950/GUID-3FA865E2-AE14-40A9-BF76-A2D7EB44D387.html["ONTAP 9 Cluster Management mit System Manager: Erstellen von FlexVol Volumes"^]
+
+*** Wählen Sie für vorhandene Volumes das Volume aus, klicken Sie auf *Bearbeiten* und wählen Sie dann *verschlüsselt*.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help-950/GUID-906E88E4-8CE9-465F-8AC7-0C089080B2C5.html["ONTAP 9 Clustermanagement mit System Manager: Bearbeiten der Volume-Eigenschaften"^]
+
+
+
+
+
+

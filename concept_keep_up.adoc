@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: concept_keep_up.html 
+keywords: shut down, shutdown, stop, stopping, billing, power on, power off 
+summary: Cloud Manager sollte stets verfügbar sein. 
+---
+= Unterbrechungsfreier Betrieb von Cloud Manager
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager sollte stets verfügbar sein.
+
+Cloud Manager ist eine Kernkomponente bei Systemzustand und Abrechnung von Cloud Volumes ONTAP. Wenn Cloud Manager heruntergefahren wird, werden Cloud Volumes ONTAP Systeme heruntergefahren, nachdem die Kommunikation mit Cloud Manager über mehr als 4 Tage lang unterbrochen wurde.

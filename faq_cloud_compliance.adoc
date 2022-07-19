@@ -1,0 +1,180 @@
+---
+sidebar: sidebar 
+permalink: faq_cloud_compliance.html 
+keywords: faq, frequently asked questions, questions 
+summary: Diese FAQ kann Ihnen helfen, wenn Sie nur eine schnelle Antwort auf eine Frage suchen. 
+---
+= Häufig gestellte Fragen zur Cloud Compliance
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Diese FAQ kann Ihnen helfen, wenn Sie nur eine schnelle Antwort auf eine Frage suchen.
+
+
+
+== Was ist Cloud Compliance?
+
+Cloud Compliance ist ein neues Cloud-Angebot von NetApp. Mithilfe von künstlicher Intelligenz (KI) hilft Cloud Compliance Unternehmen dabei, den Datenkontext zu verstehen und sensible Daten über die in AWS oder Azure gehosteten Cloud Volumes ONTAP Systeme zu identifizieren.
+
+Cloud Compliance stellt vordefinierte Parameter wie sensible Informationstypen und -Kategorien zur Verfügung, um neue Compliance-Vorschriften für Datenschutz und -Sensibilität wie DSGVO, CCPA usw. zu erfüllen.
+
+
+
+== Warum sollte ich Cloud-Compliance verwenden?
+
+Cloud Compliance bietet Ihnen mehr Möglichkeiten für die Nutzung von Daten:
+
+* Einhaltung von Daten-Compliance- und Datenschutzvorschriften
+* Einhaltung von Richtlinien zur Datenaufbewahrung.
+* Das Auffinden und Reporting von Daten zu bestimmten Daten als Antwort auf Betroffene kann auf einfache Weise entsprechend den Vorgaben von DSGVO, CCPA und anderen Datenschutzvorschriften erfolgen.
+
+
+
+
+== Was sind die gängigsten Anwendungsfälle für Cloud Compliance?
+
+* Ermitteln von personenbezogenen Daten
+* Identifizieren Sie einen breiten Umfang sensibler Daten, wie sie im Sinne der DSGVO- und CCPA-Datenschutzvorschriften erforderlich sind.
+* Einhaltung neuer und anstehender Datenschutzvorschriften
+
+
+https://cloud.netapp.com/cloud-compliance["Erfahren Sie mehr über die Anwendungsfälle für Cloud Compliance"^].
+
+
+
+== Welche Datentypen können mit Cloud Compliance gescannt werden?
+
+Cloud Compliance unterstützt die Überprüfung unstrukturierter Daten über NFS- und CIFS-Protokolle. Derzeit überprüft Cloud Compliance die von Cloud Volumes ONTAP gemanagten Daten.
+
+link:concept_cloud_compliance.html#how-scans-work["Lesen Sie, wie Scans funktionieren"].
+
+
+
+== Welche Cloud-Provider werden unterstützt?
+
+Cloud Compliance arbeitet als Teil von Cloud Manager und unterstützt derzeit AWS und Azure. Dadurch erhält Ihr Unternehmen Transparenz im Hinblick auf den Datenschutz bei verschiedenen Cloud-Providern. Demnächst wird auch Support für die Google Cloud Platform (GCP) verfügbar sein.
+
+
+
+== Wie erhalte ich Zugriff auf Cloud Compliance?
+
+Cloud Compliance wird über Cloud Manager betrieben und gemanagt. Sie können Cloud Compliance-Funktionen über die Registerkarte *Compliance* in Cloud Manager aufrufen.
+
+
+
+== Wie funktioniert Cloud Compliance?
+
+Cloud Compliance implementiert gemeinsam mit Ihrem Cloud Manager System und Cloud Volumes ONTAP Instanzen eine weitere Schicht künstlicher Intelligenz. Anschließend scannt sie die Daten auf Cloud Volumes ONTAP und indiziert die gefundenen Dateneinblicke.
+
+link:concept_cloud_compliance.html["Funktionsweise von Cloud Compliance"].
+
+
+
+== Wie viel kostet Cloud Compliance?
+
+Cloud-Compliance wird als Teil von Cloud Volumes ONTAP angeboten und erfordert keine zusätzlichen Kosten. Für kundenspezifische Funktionen können in Zukunft möglicherweise zusätzliche Kosten anfallen.
+
+
+NOTE: Cloud Compliance erfordert die Implementierung einer Instanz bei Ihrem Cloud-Provider, für die Sie durch Ihren Cloud-Provider in Rechnung gestellt werden.
+
+
+
+== Wie oft scannt Cloud Compliance meine Daten?
+
+Da sich die Daten häufig ändern, scannt Cloud Compliance Ihre Daten kontinuierlich, ohne Auswirkungen auf Ihre Daten. Während der erste Scan Ihrer Daten länger dauern kann, scannen nachfolgende Scans nur die inkrementellen Änderungen, was die Dauer des Systemscans verkürzt.
+
+link:concept_cloud_compliance.html#how-scans-work["Lesen Sie, wie Scans funktionieren"].
+
+
+
+== Bietet Cloud Compliance Berichte an?
+
+Ja. Die von Cloud Compliance angebotenen Informationen können für andere Beteiligte in Ihrem Unternehmen relevant sein. So können Sie Berichte erstellen und Einblicke erhalten.
+
+Für Cloud Compliance stehen folgende Berichte zur Verfügung:
+
+Datenschutzrisiko-Assessment-Bericht:: Bietet Einblicke in den Datenschutz und eine Bewertung des Datenschutzrisikos. link:task_generating_compliance_reports.html["Weitere Informationen ."].
+Bericht für Anforderung von Datenfachzugriff:: Ermöglicht Ihnen, einen Bericht aller Dateien zu extrahieren, die Informationen über den spezifischen Namen oder die persönliche Kennung eines Betroffenen enthalten. link:task_responding_to_dsar.html["Weitere Informationen ."].
+Berichte zu einem bestimmten Informationstyp:: Es stehen Berichte zur Verfügung, die Details zu den identifizierten Dateien enthalten, die personenbezogene Daten und sensible personenbezogene Daten enthalten. Sie können auch Dateien nach Kategorie und Dateityp aufgeschlüsselt sehen. link:task_controlling_private_data.html["Weitere Informationen ."].
+
+
+
+
+== Welcher Instanztyp oder VM ist für Cloud Compliance erforderlich?
+
+* In Azure wird Cloud Compliance auf einer VM mit Standard_D16s_v3 mit einer Festplatte von 512 GB ausgeführt.
+* In AWS wird Cloud-Compliance auf einer m5.4xlarge-Instanz mit einer 500-GB-io1-Festplatte ausgeführt.
++
+In Regionen, in denen m5.4xlarge nicht verfügbar ist, wird Cloud Compliance stattdessen auf einer m4.4xlarge-Instanz ausgeführt.
+
+
+
+link:concept_cloud_compliance.html["Funktionsweise von Cloud Compliance"].
+
+
+
+== Ist die Scanleistung unterschiedlich?
+
+Die Scan-Performance kann je nach Netzwerkbandbreite und durchschnittlicher Dateigröße in der Cloud-Umgebung variieren.
+
+
+
+== Wie kann ich Cloud-Compliance aktivieren?
+
+Sie können Cloud-Compliance aktivieren, wenn Sie eine neue Arbeitsumgebung erstellen. Sie können es auf bestehenden Arbeitsumgebungen über die Registerkarte *Compliance* (nur bei der ersten Aktivierung) oder durch Auswahl einer bestimmten Arbeitsumgebung aktivieren.
+
+link:task_getting_started_compliance.html["Erste Schritte"].
+
+
+NOTE: Durch die Aktivierung von Cloud Compliance wird ein sofortiger anfänglicher Scan durchgeführt. Ergebnisse der Compliance werden kurz danach angezeigt.
+
+
+
+== Wie deaktiviere ich Cloud Compliance?
+
+Sie können Cloud-Compliance auf der Seite Arbeitsumgebung deaktivieren, nachdem Sie eine individuelle Arbeitsumgebung ausgewählt haben.
+
+link:task_managing_compliance.html["Weitere Informationen ."].
+
+
+NOTE: Wenn Sie die Cloud Compliance-Instanz vollständig entfernen möchten, können Sie die Cloud Compliance-Instanz manuell aus dem Portal Ihres Cloud-Providers entfernen.
+
+
+
+== Was geschieht, wenn das Daten-Tiering auf Cloud Volumes ONTAP aktiviert ist?
+
+Es ist sinnvoll, Cloud-Compliance auf einem Cloud Volumes ONTAP System zu aktivieren, das kalte Daten auf Objekt-Storage abschichtet. Wenn das Daten-Tiering aktiviert ist, scannt Cloud Compliance alle Daten auf Festplatten, die sich auf kalten Daten befinden, die in Objekt-Storage verschoben werden.
+
+Der Compliance-Scan erhitzt die nicht kalten Daten – es bleibt kalt und führt zu Objekt-Storage.
+
+
+
+== Kann ich Cloud Compliance verwenden, um den lokalen ONTAP Storage zu scannen?
+
+Nein Cloud Compliance ist derzeit Teil von Cloud Manager und unterstützt Cloud Volumes ONTAP. Wir planen, Cloud Compliance durch zusätzliche Cloud-Angebote wie Cloud Volumes Service und Azure NetApp Files zu unterstützen. 
+
+
+
+== Kann Cloud Compliance Benachrichtigungen an mein Unternehmen senden?
+
+Nein, aber Sie können Statusberichte herunterladen, die Sie intern in Ihrem Unternehmen teilen können.
+
+
+
+== Kann ich den Service an die Bedürfnisse meiner Organisation anpassen?
+
+Cloud Compliance bietet sofortige Einblicke in Ihre Daten. Diese Erkenntnisse können extrahiert und für die Bedürfnisse Ihres Unternehmens verwendet werden.
+
+
+
+== Kann ich die Daten zur Cloud Compliance auf bestimmte Benutzer begrenzen?
+
+Ja, Cloud Compliance ist vollständig in Cloud Manager integriert. Cloud Manager-Benutzer können nur Informationen für die Arbeitsumgebungen anzeigen, die sie entsprechend ihren Arbeitsbereichsberechtigungen anzeigen können.
+
+link:concept_cloud_compliance.html#user-access-to-compliance-information["Weitere Informationen ."].

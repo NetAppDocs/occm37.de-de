@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: reference_networking_azure.html 
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint 
+summary: Richten Sie Ihr Azure Netzwerk ein, um Cloud Volumes ONTAP Systeme ordnungsgemäß funktionieren zu können. 
+---
+= Netzwerkanforderungen für Cloud Volumes ONTAP in Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Richten Sie Ihr Azure Netzwerk ein, um Cloud Volumes ONTAP Systeme ordnungsgemäß funktionieren zu können.
+
+Outbound-Internetzugang für Cloud Volumes ONTAP:: Cloud Volumes ONTAP erfordert ausgehenden Internetzugang, um Nachrichten an NetApp AutoSupport zu senden, der proaktiv den Zustand Ihres Storage überwacht.
++
+--
+Routing- und Firewall-Richtlinien müssen HTTP-/HTTPS-Datenverkehr an die folgenden Endpunkte ermöglichen, damit Cloud Volumes ONTAP AutoSupport-Meldungen senden kann:
+
+* \https://support.netapp.com/aods/asupmessage
+* \https://support.netapp.com/asupprod/post/1.0/postAsup
+
+
+--
+Sicherheitsgruppen:: Sie müssen keine Sicherheitsgruppen erstellen, da Cloud Manager dies für Sie tut. Wenn Sie Ihr eigenes verwenden müssen, lesen Sie link:reference_security_groups_azure.html["Regeln für Sicherheitsgruppen"].
+Anzahl der IP-Adressen:: Cloud Manager weist Cloud Volumes ONTAP in Azure die folgende Anzahl von IP-Adressen zu:
++
+--
+* Single Node: 5 IP-Adressen
+* HA-Paar: 16 IP-Adressen
++
+Cloud Manager erstellt eine SVM-Management-LIF auf HA-Paare, jedoch nicht auf Systemen mit einem einzelnen Node in Azure.
+
++
+
+TIP: Ein LIF ist eine IP-Adresse, die einem physischen Port zugewiesen ist. Für Managementtools wie SnapCenter ist eine SVM-Management-LIF erforderlich.
+
+
+
+--
+Verbindung von Cloud Volumes ONTAP zu Azure Blob Storage für Data Tiering:: Wenn Sie „kalte“ Daten für den Azure Blob Storage Tiering möchten, müssen Sie keine Verbindung zwischen der Performance-Tier und der Kapazitäts-Tier einrichten, solange Cloud Manager über die erforderlichen Berechtigungen verfügt. Cloud Manager unterstützt ein vnet-Service-Endpunkt für Sie, wenn die Cloud Manager-Richtlinie über die folgenden Berechtigungen verfügt:
++
+--
+[source, json]
+----
+"Microsoft.Network/virtualNetworks/subnets/write",
+"Microsoft.Network/routeTables/join/action",
+----
+Diese Berechtigungen sind in der neuesten enthalten https://mysupport.netapp.com/cloudontap/iampolicies["Cloud Manager-Richtlinie"].
+
+Weitere Informationen zum Einrichten von Daten-Tiering finden Sie unter link:task_tiering.html["Tiering von kalten Daten auf kostengünstigen Objekt-Storage"].
+
+--
+Verbindungen zu ONTAP Systemen in anderen Netzwerken:: Um Daten zwischen einem Cloud Volumes ONTAP System in Azure und ONTAP Systemen in anderen Netzwerken zu replizieren, müssen Sie über eine VPN-Verbindung zwischen Azure VNet und dem anderen Netzwerk verfügen, z. B. einem AWS VPC oder Ihrem Unternehmensnetzwerk.
++
+--
+Anweisungen finden Sie unter https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure Dokumentation: Erstellen Sie eine Site-to-Site-Verbindung im Azure-Portal"^].
+
+--
+

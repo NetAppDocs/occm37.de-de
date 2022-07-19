@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: reference_limitations.html 
+keywords: limitations, active directory, ad, iscsi, key managers, ip address, govcloud, cloud manager, Cloud Volumes ONTAP 
+summary: Bekannte Einschränkungen identifizieren Plattformen, Geräte oder Funktionen, die von dieser Version des Produkts nicht unterstützt werden oder nicht korrekt mit dem Produkt zusammenarbeiten. Lesen Sie diese Einschränkungen sorgfältig durch. 
+---
+= Bekannte Einschränkungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bekannte Einschränkungen identifizieren Plattformen, Geräte oder Funktionen, die von dieser Version des Produkts nicht unterstützt werden oder nicht korrekt mit dem Produkt zusammenarbeiten. Lesen Sie diese Einschränkungen sorgfältig durch.
+
+
+
+== Cloud Manager sollte stets verfügbar sein
+
+Cloud Manager ist eine Kernkomponente bei Systemzustand und Abrechnung von Cloud Volumes ONTAP. Wenn Cloud Manager heruntergefahren wird, werden Cloud Volumes ONTAP Systeme heruntergefahren, nachdem die Kommunikation mit Cloud Manager über mehr als 4 Tage lang unterbrochen wurde.
+
+
+
+== Freigegebene Linux-Hosts werden nicht unterstützt
+
+Cloud Manager wird auf einem Host, der für andere Applikationen freigegeben ist, nicht unterstützt. Der Host muss ein dedizierter Host sein.
+
+
+
+== Cloud Manager unterstützt FlexGroup Volumes nicht
+
+Cloud Volumes ONTAP unterstützt zwar FlexGroup Volumes, aber Cloud Manager nicht. Wenn Sie ein FlexGroup-Volume aus System Manager oder aus der CLI erstellen, sollten Sie den Modus „Kapazitätsmanagement“ von Cloud Manager auf „manuell“ setzen. Der automatische Modus funktioniert möglicherweise nicht ordnungsgemäß mit FlexGroup-Volumes.
+
+
+
+== Active Directory wird bei neuen Installationen von Cloud Manager standardmäßig nicht unterstützt
+
+Ab Version 3.4 unterstützen neue Installationen von Cloud Manager nicht die Active Directory-Authentifizierung Ihres Unternehmens für die Benutzerverwaltung. Bei Bedarf kann NetApp Sie bei der Einrichtung von Active Directory mit Cloud Manager unterstützen. Klicken Sie auf das Chat-Symbol unten rechts im Cloud Manager, um Hilfe zu erhalten.
+
+
+
+== Einschränkungen in der AWS GovCloud (USA) Region
+
+* Cloud Manager muss in der Region AWS GovCloud (USA) implementiert werden, wenn Sie Cloud Volumes ONTAP Instanzen in der Region AWS GovCloud (USA) starten möchten.
+* Bei der Implementierung in der AWS GovCloud (USA)-Region kann Cloud Manager ONTAP Cluster in einer NetApp Private Storage für Microsoft Azure Konfiguration oder einer NetApp Private Storage für SoftLayer Konfiguration nicht erkennen.
+
+
+
+
+== Cloud Manager richtet keine iSCSI-Volumes ein
+
+Wenn Sie ein Volume in Cloud Manager mithilfe der Storage System View erstellen, können Sie das NFS- oder CIFS-Protokoll auswählen. Sie müssen OnCommand System Manager verwenden, um ein Volume für iSCSI zu erstellen.
+
+
+
+== Storage Virtual Machine (SVM)-Einschränkung
+
+Cloud Volumes ONTAP unterstützt eine SVM mit Datenbereitstellung und eine oder mehrere SVMs, die für Disaster Recovery verwendet werden. Die eine Datenservice-SVM umfasst das gesamte Cloud Volumes ONTAP System (HA-Paar oder ein Node).
+
+Cloud Manager bietet keine Einrichtungs- oder Orchestrierungsunterstützung für SVM Disaster Recovery. Darüber hinaus werden Storage-bezogene Aufgaben auf zusätzlichen SVMs nicht unterstützt. Sie müssen System Manager oder die CLI für die SVM-Disaster Recovery verwenden.

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: concept_overview.html 
+keywords: overview, concepts, features, use case 
+summary: Mit Cloud Manager können Sie Cloud Volumes ONTAP implementieren, das Funktionen der Enterprise-Klasse für Ihren Cloud-Storage bietet und Daten einfach zwischen Hybrid Clouds basierend auf NetApp Technologie replizieren. 
+---
+= Überblick über Cloud Manager und Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Mit Cloud Manager können Sie Cloud Volumes ONTAP implementieren, das Funktionen der Enterprise-Klasse für Ihren Cloud-Storage bietet und Daten einfach zwischen Hybrid Clouds basierend auf NetApp Technologie replizieren.
+
+
+
+== Cloud Manager
+
+Cloud Manager wurde mit Blick auf Einfachheit entwickelt. Sie führt Sie in wenigen Schritten durch die Cloud Volumes ONTAP Einrichtung und erleichtert das Datenmanagement durch vereinfachte Storage-Provisionierung und automatisiertes Kapazitätsmanagement, ermöglicht Datenreplizierung per Drag-and-Drop in einer Hybrid Cloud und vieles mehr.
+
+Cloud Manager ist für die Implementierung und das Management von Cloud Volumes ONTAP erforderlich, kann aber auch Storage für On-Premises ONTAP Cluster erkennen und bereitstellen. Dies stellt einen zentralen Kontrollpunkt für Ihre Cloud und lokale Storage-Infrastruktur dar.
+
+Sie können Cloud Manager in der Cloud oder in Ihrem Netzwerk ausführen. Sie benötigen lediglich eine Verbindung zu den Netzwerken, in denen Sie Cloud Volumes ONTAP implementieren möchten. Das folgende Bild zeigt Cloud Manager und Cloud Volumes ONTAP, die bei einem Cloud-Provider ausgeführt werden. Außerdem wird die Datenreplizierung in einer Hybrid Cloud dargestellt.
+
+image:diagram_cloud_manager_overview.png["Zeigt Cloud Manager beim Management eines Cloud Volumes ONTAP Systems sowie bei der Datenreplizierung in einer Hybrid-Cloud- und Multi-Cloud-Umgebung."]
+
+https://www.netapp.com/us/products/data-infrastructure-management/cloud-manager.aspx["Erfahren Sie mehr über Cloud Manager"^]
+
+
+
+== Cloud Volumes ONTAP
+
+Cloud Volumes ONTAP ist eine reine Software-Storage Appliance, die die ONTAP Datenmanagement-Software in der Cloud ausführt. Sie können Cloud Volumes ONTAP für Produktions-Workloads, Disaster Recovery, DevOps, Dateifreigaben und Datenbankmanagement verwenden.
+
+Cloud Volumes ONTAP erweitert Enterprise Storage mit den folgenden Hauptfunktionen auf die Cloud:
+
+* Storage-Effizienz Nutzen Sie die integrierte Datendeduplizierung, Datenkomprimierung, Thin Provisioning und Klonen, um Storage-Kosten zu minimieren.
+* Hochverfügbarkeit und Sicherstellung der Zuverlässigkeit der Enterprise-Klasse sowie eines unterbrechungsfreien Betriebs bei Ausfällen in der Cloud-Umgebung
+* Datenreplizierung Cloud Volumes ONTAP nutzt SnapMirror, die branchenführende Replizierungstechnologie von NetApp, um lokale Daten in die Cloud zu replizieren. So ist es ganz einfach, sekundäre Kopien für mehrere Anwendungsfälle verfügbar zu haben.
+* Daten-Tiering Wechsel zwischen hoch- und leistungsarmen Speicherpools nach Bedarf, ohne Applikationen offline zu schalten.
+* Applikationskonsistenz stellen mit NetApp SnapCenter die Konsistenz von NetApp Snapshot Kopien sicher.
+
+
+
+NOTE: Lizenzen für ONTAP Funktionen sind im Lieferumfang von Cloud Volumes ONTAP enthalten.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["Anzeigen der unterstützten Cloud Volumes ONTAP Konfigurationen"^]
+
+https://cloud.netapp.com/ontap-cloud["Erfahren Sie mehr über Cloud Volumes ONTAP"^]

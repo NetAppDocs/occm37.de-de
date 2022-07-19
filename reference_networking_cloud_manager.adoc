@@ -1,0 +1,275 @@
+---
+sidebar: sidebar 
+permalink: reference_networking_cloud_manager.html 
+keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, proxy server, vpn, outbound, inbound, connections, jump host, URL, URLs, endpoints, endpoint, ports 
+summary: Richten Sie Ihr Netzwerk ein, damit Cloud Manager Cloud Volumes ONTAP Systeme in AWS oder Microsoft Azure implementieren kann. Der wichtigste Schritt besteht darin, ausgehenden Internetzugriff auf verschiedene Endpunkte zu gewährleisten. 
+---
+= Netzwerkanforderungen für Cloud Manager
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Richten Sie Ihr Netzwerk ein, damit Cloud Manager Cloud Volumes ONTAP Systeme in AWS, Microsoft Azure oder Google Cloud Platform implementieren kann. Der wichtigste Schritt besteht darin, ausgehenden Internetzugriff auf verschiedene Endpunkte zu gewährleisten.
+
+
+TIP: Wenn Ihr Netzwerk einen Proxyserver für die gesamte Kommunikation mit dem Internet verwendet, fordert Cloud Manager Sie auf, den Proxy während der Einrichtung anzugeben. Sie können den Proxyserver auch auf der Seite Einstellungen angeben. Siehe link:task_configuring_proxy.html["Konfigurieren von Cloud Manager für die Verwendung eines Proxyservers"].
+
+
+
+== Verbindung zu Zielnetzwerken
+
+Cloud Manager benötigt eine Netzwerkverbindung zu den VPCs und VNets, in denen Cloud Volumes ONTAP implementiert werden soll.
+
+Wenn Sie beispielsweise Cloud Manager in Ihrem Unternehmensnetzwerk installieren, müssen Sie eine VPN-Verbindung zu der VPC oder vnet einrichten, in dem Cloud Volumes ONTAP gestartet wird.
+
+
+
+== Outbound-Internetzugang
+
+Cloud Manager erfordert ausgehenden Internetzugang, um Cloud Volumes ONTAP bereitzustellen und zu managen. Outbound-Internetzugang ist auch erforderlich, wenn Sie über Ihren Webbrowser auf Cloud Manager zugreifen und das Cloud Manager-Installationsprogramm auf einem Linux-Host ausführen.
+
+In den folgenden Abschnitten werden die spezifischen Endpunkte beschrieben.
+
+
+
+=== Endpunkte für das Management von Cloud Volumes ONTAP in AWS
+
+Cloud Manager erfordert ausgehenden Internetzugang, um bei der Implementierung und dem Management von Cloud Volumes ONTAP in AWS die folgenden Endpunkte zu kontaktieren:
+
+[cols="43,57"]
+|===
+| Endpunkte | Zweck 
+
+
+ a| 
+AWS-Services (amazonaws.com):
+
+* CloudFormation
+* Elastic Compute Cloud (EC2)
+* Key Management Service (KMS)
+* Security Token Service (STS)
+* Simple Storage Service (S3)
+
+
+Der genaue Endpunkt hängt von der Region ab, in der Sie Cloud Volumes ONTAP implementieren. https://docs.aws.amazon.com/general/latest/gr/rande.html["Weitere Informationen finden Sie in der AWS-Dokumentation."^]
+| Ermöglicht Cloud Manager die Implementierung und das Management von Cloud Volumes ONTAP in AWS. 
+
+
+| \https://api.services.cloud.netapp.com:443 | API-Anfragen an NetApp Cloud Central. 
+
+
+| \https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | Bietet Zugriff auf Software-Images, Manifeste und Vorlagen. 
+
+
+| \https://cognito-idp.us-east-1.amazonaws.com \https://cognito-identity.us-east-1.amazonaws.com | Cloud Manager kann Manifeste, Vorlagen und Cloud Volumes ONTAP Upgrade-Images abrufen und herunterladen. 
+
+
+| \https://kinesis.us-east-1.amazonaws.com | Ermöglicht NetApp das Streamen von Daten aus Audit-Datensätzen. 
+
+
+| \https://cloudmanager.cloud.netapp.com | Kommunikation mit dem Cloud Manager-Service, der Cloud Central-Konten einschließt 
+
+
+| \https://netapp-cloud-account.auth0.com | Kommunikation mit NetApp Cloud Central für zentralisierte Benutzerauthentifizierung 
+
+
+| \https://w86yt021u5.execute-api.us-east-1.amazonaws.com/production/whitelist | Wird verwendet, um Ihre AWS Konto-ID der Liste der zugelassenen Benutzer für die Sicherung in S3 hinzuzufügen. 
+
+
+| \https://support.netapp.com/aods/asupmessage \https://support.netapp.com/asupprod/post/1.0/postAsup | Kommunikation mit NetApp AutoSupport. 
+
+
+| \https://support.netapp.com/svcgw \https://support.netapp.com/ServiceGW/entitlement | Kommunikation mit NetApp bei Systemlizenzrechten und Support-Registrierung 
+
+
+| \https://ipa-signer.cloudmanager.netapp.com | Ermöglicht Cloud Manager die Generierung von Lizenzen (beispielsweise eine FlexCache Lizenz für Cloud Volumes ONTAP) 
+
+
+| \https://packages.cloud.google.com/yum \https://github.com/NetApp/trident/releases/download/ | Erforderlich, um Cloud Volumes ONTAP Systeme mit einem Kubernetes Cluster zu verbinden Mit den Endpunkten ist die Installation von NetApp Trident möglich. 
+
+
+ a| 
+Verschiedene Standorte von Drittanbietern, z. B.:
+
+* \https://repo1.maven.org/maven2
+* \https://oss.sonatype.org/content/repositories
+* \https://repo.typesafe.org
+
+
+An Standorten von Drittanbietern können Änderungen vorgenommen werden.
+| Während Upgrades lädt Cloud Manager die neuesten Pakete für Abhängigkeiten von Drittanbietern herunter. 
+|===
+
+
+=== Endpunkte zum Management von Cloud Volumes ONTAP in Azure
+
+Cloud Manager erfordert ausgehenden Internetzugang, um bei der Bereitstellung und Verwaltung von Cloud Volumes ONTAP in Microsoft Azure folgende Endpunkte zu kontaktieren:
+
+[cols="43,57"]
+|===
+| Endpunkte | Zweck 
+
+
+| \https://management.azure.com \https://login.microsoftonline.com | Ermöglicht Cloud Manager die Implementierung und das Management von Cloud Volumes ONTAP in den meisten Azure Regionen. 
+
+
+| \https://management.microsoftazure.de \https://login.microsoftonline.de | Ermöglicht Cloud Manager die Implementierung und das Management von Cloud Volumes ONTAP in den Azure Germany Regionen. 
+
+
+| \https://management.usgovcloudapi.net \https://login.microsoftonline.com | Ermöglicht Cloud Manager die Implementierung und das Management von Cloud Volumes ONTAP in den Azure US Gov Regionen. 
+
+
+| \https://api.services.cloud.netapp.com:443 | API-Anfragen an NetApp Cloud Central. 
+
+
+| \https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | Bietet Zugriff auf Software-Images, Manifeste und Vorlagen. 
+
+
+| \https://cognito-idp.us-east-1.amazonaws.com \https://cognito-identity.us-east-1.amazonaws.com \https://sts.amazonaws.com | Cloud Manager kann Manifeste, Vorlagen und Cloud Volumes ONTAP Upgrade-Images abrufen und herunterladen. 
+
+
+| \https://kinesis.us-east-1.amazonaws.com | Ermöglicht NetApp das Streamen von Daten aus Audit-Datensätzen. 
+
+
+| \https://cloudmanager.cloud.netapp.com | Kommunikation mit dem Cloud Manager-Service, der Cloud Central-Konten einschließt 
+
+
+| \https://netapp-cloud-account.auth0.com | Kommunikation mit NetApp Cloud Central für zentralisierte Benutzerauthentifizierung 
+
+
+| \https://mysupport.netapp.com | Kommunikation mit NetApp AutoSupport. 
+
+
+| \https://support.netapp.com/svcgw \https://support.netapp.com/ServiceGW/entitlement | Kommunikation mit NetApp bei Systemlizenzrechten und Support-Registrierung 
+
+
+| \https://ipa-signer.cloudmanager.netapp.com | Ermöglicht Cloud Manager die Generierung von Lizenzen (beispielsweise eine FlexCache Lizenz für Cloud Volumes ONTAP) 
+
+
+| \https://packages.cloud.google.com/yum \https://github.com/NetApp/trident/releases/download/ | Erforderlich, um Cloud Volumes ONTAP Systeme mit einem Kubernetes Cluster zu verbinden Mit den Endpunkten ist die Installation von NetApp Trident möglich. 
+
+
+ a| 
+Verschiedene Standorte von Drittanbietern, z. B.:
+
+* \https://repo1.maven.org/maven2
+* \https://oss.sonatype.org/content/repositories
+* \https://repo.typesafe.org
+
+
+An Standorten von Drittanbietern können Änderungen vorgenommen werden.
+| Während Upgrades lädt Cloud Manager die neuesten Pakete für Abhängigkeiten von Drittanbietern herunter. 
+|===
+
+
+=== Endpunkte zum Management von Cloud Volumes ONTAP in GCP
+
+Für die Implementierung und das Management von Cloud Volumes ONTAP in GCP ist für Cloud Manager ein abgehender Internetzugang erforderlich, damit Sie die folgenden Endpunkte kontaktieren können:
+
+[cols="43,57"]
+|===
+| Endpunkte | Zweck 
+
+
+| \https://www.googleapis.com | Ermöglicht Cloud Manager den Kontakt zu Google APIs für die Implementierung und das Management von Cloud Volumes ONTAP in GCP. 
+
+
+| \https://api.services.cloud.netapp.com:443 | API-Anfragen an NetApp Cloud Central. 
+
+
+| \https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | Bietet Zugriff auf Software-Images, Manifeste und Vorlagen. 
+
+
+| \https://cognito-idp.us-east-1.amazonaws.com \https://cognito-identity.us-east-1.amazonaws.com \https://sts.amazonaws.com | Cloud Manager kann Manifeste, Vorlagen und Cloud Volumes ONTAP Upgrade-Images abrufen und herunterladen. 
+
+
+| \https://kinesis.us-east-1.amazonaws.com | Ermöglicht NetApp das Streamen von Daten aus Audit-Datensätzen. 
+
+
+| \https://cloudmanager.cloud.netapp.com | Kommunikation mit dem Cloud Manager-Service, der Cloud Central-Konten einschließt 
+
+
+| \https://netapp-cloud-account.auth0.com | Kommunikation mit NetApp Cloud Central für zentralisierte Benutzerauthentifizierung 
+
+
+| \https://mysupport.netapp.com | Kommunikation mit NetApp AutoSupport. 
+
+
+| \https://support.netapp.com/svcgw \https://support.netapp.com/ServiceGW/entitlement | Kommunikation mit NetApp bei Systemlizenzrechten und Support-Registrierung 
+
+
+| \https://ipa-signer.cloudmanager.netapp.com | Ermöglicht Cloud Manager die Generierung von Lizenzen (beispielsweise eine FlexCache Lizenz für Cloud Volumes ONTAP) 
+
+
+| \https://packages.cloud.google.com/yum \https://github.com/NetApp/trident/releases/download/ | Erforderlich, um Cloud Volumes ONTAP Systeme mit einem Kubernetes Cluster zu verbinden Mit den Endpunkten ist die Installation von NetApp Trident möglich. 
+
+
+ a| 
+Verschiedene Standorte von Drittanbietern, z. B.:
+
+* \https://repo1.maven.org/maven2
+* \https://oss.sonatype.org/content/repositories
+* \https://repo.typesafe.org
+
+
+An Standorten von Drittanbietern können Änderungen vorgenommen werden.
+| Während Upgrades lädt Cloud Manager die neuesten Pakete für Abhängigkeiten von Drittanbietern herunter. 
+|===
+
+
+=== Endpunkte, auf die über Ihren Webbrowser zugegriffen wird
+
+Benutzer müssen über einen Webbrowser auf Cloud Manager zugreifen. Die Maschine, auf der der Webbrowser ausgeführt wird, muss über Verbindungen zu den folgenden Endpunkten verfügen:
+
+[cols="43,57"]
+|===
+| Endpunkte | Zweck 
+
+
+| Der Cloud Manager-Host  a| 
+Sie müssen die IP-Adresse des Hosts aus einem Webbrowser eingeben, um die Cloud Manager-Konsole zu laden.
+
+Je nach Ihrer Verbindung mit Ihrem Cloud-Provider können Sie die private IP oder eine dem Host zugewiesene öffentliche IP verwenden:
+
+* Eine private IP funktioniert, wenn Sie über ein VPN verfügen und direkten Zugriff auf Ihr virtuelles Netzwerk haben
+* Eine öffentliche IP funktioniert in jedem Netzwerkszenario
+
+
+In jedem Fall sollten Sie den Netzwerkzugriff sichern, indem Sie sicherstellen, dass die Sicherheitsgruppenregeln den Zugriff nur von autorisierten IPs oder Subnetzen ermöglichen.
+
+
+
+| \https://auth0.com \https://cdn.auth0.com \https://netapp-cloud-account.auth0.com \https://services.cloud.netapp.com | Ihr Webbrowser stellt über NetApp Cloud Central eine Verbindung zu diesen Endpunkten her, um eine zentralisierte Benutzerauthentifizierung zu ermöglichen. 
+
+
+| \https://widget.intercom.io | Für Ihren Produkt-Chat, der Ihnen das Gespräch mit NetApp Cloud-Experten ermöglicht. 
+|===
+
+
+=== Endpunkte zum Installieren von Cloud Manager auf einem Linux-Host
+
+Das Cloud Manager-Installationsprogramm muss während des Installationsvorgangs auf die folgenden URLs zugreifen:
+
+* \http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+* \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+* \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+
+
+
+
+== Ports und Sicherheitsgruppen
+
+* Wenn Sie Cloud Manager über Cloud Central oder über Marktplatz-Images bereitstellen, lesen Sie Folgendes:
++
+** link:reference_security_groups.html#rules-for-cloud-manager["Sicherheitsgruppenregeln für Cloud Manager in AWS"]
+** link:reference_security_groups_azure.html#rules-for-cloud-manager["Sicherheitsgruppenregeln für Cloud Manager in Azure"]
+** link:reference_firewall_rules_gcp.html#rules-for-cloud-manager["Firewall-Regeln für Cloud Manager in GCP"]
+
+
+* Wenn Sie Cloud Manager auf einem vorhandenen Linux-Host installieren, lesen Sie link:reference_cloud_mgr_reqs.html["Anforderungen an den Cloud Manager Host"].
+

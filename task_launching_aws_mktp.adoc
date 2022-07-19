@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: task_launching_aws_mktp.html 
+keywords: install, installation, installing, marketplace, aws, launch, launching, ec2 console, iam role 
+summary: Am besten starten Sie Cloud Manager in AWS mithilfe von NetApp Cloud Central , aber Sie können ihn bei Bedarf über den AWS Marketplace starten. 
+---
+= Starten von Cloud Manager über den AWS Marketplace
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Am besten sollte Cloud Manager in AWS gestartet werden, das verwendet wird https://cloud.netapp.com["NetApp Cloud Central"^], Sie können diese jedoch bei Bedarf über den AWS Marketplace starten.
+
+
+TIP: Wenn Sie Cloud Manager über den AWS Marketplace starten, ist Cloud Manager weiterhin in NetApp Cloud Central integriert. link:concept_cloud_central.html["Erfahren Sie mehr über die Integration"].
+
+In den folgenden Schritten wird beschrieben, wie die Instanz von der EC2-Konsole aus gestartet wird, da Sie über die Konsole eine IAM-Rolle an die Cloud Manager-Instanz anhängen können. Dies ist mit der Aktion * von Website starten* nicht möglich.
+
+.Schritte
+. IAM-Richtlinie und -Rolle für die EC2-Instanz erstellen:
++
+.. Laden Sie die Cloud Manager IAM-Richtlinie von folgendem Speicherort herunter:
++
+https://mysupport.netapp.com/cloudontap/iampolicies["NetApp Cloud Manager: AWS, Azure und GCP-Richtlinien"^]
+
+.. Erstellen Sie über die IAM-Konsole Ihre eigene Richtlinie, indem Sie den Text aus der Cloud Manager IAM-Richtlinie kopieren und einfügen.
+.. Erstellen Sie eine IAM-Rolle mit dem Rollentyp Amazon EC2, und hängen Sie die im vorherigen Schritt erstellte Richtlinie an die Rolle an.
+
+
+. https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Abonnieren Sie ihn im AWS Marketplace"^] Um sicherzustellen, dass es nach der kostenlosen Testversion von Cloud Volumes ONTAP keine Serviceunterbrechung gibt. Sie erhalten für jedes von Ihnen erstellte Cloud Volumes ONTAP 9.6 und höhere PAYGO System und jede von Ihnen aktiviert erstellte Zusatzfunktion die Gebühr.
+. Gehen Sie jetzt zum https://aws.amazon.com/marketplace/pp/B018REK8QG["Seite zu Cloud Manager im AWS Marketplace"^] Um Cloud Manager über eine AMI bereitzustellen.
+. Klicken Sie auf der Marketplace-Seite auf *Weiter zur Anmeldung* und dann auf *Weiter zur Konfiguration*.
+. Ändern Sie eine der Standardoptionen, und klicken Sie auf *Weiter zum Starten*.
+. Wählen Sie unter *Aktion auswählen* *über EC2 starten* und klicken Sie dann auf *Start*.
+. Befolgen Sie die Anweisungen zur Konfiguration und Bereitstellung der Instanz:
++
+** *Instanztyp wählen*: Wählen Sie je nach Verfügbarkeit der Region einen der unterstützten Instanztypen (t3.Medium wird empfohlen).
++
+link:reference_cloud_mgr_reqs.html["Überprüfen Sie die Liste der unterstützten Instanztypen"].
+
+** *Instanz konfigurieren*: Wählen Sie eine VPC und ein Subnetz, die IAM-Rolle, die Sie in Schritt 1 erstellt haben, und andere Konfigurationsoptionen aus, die Ihren Anforderungen entsprechen.
++
+image:screenshot_aws_iam_role.gif["Ein Screenshot, der Felder auf der Seite Configure Instance in AWS zeigt. Die IAM-Rolle, die Sie in Schritt 1 erstellt haben sollen, wird ausgewählt."]
+
+** *Speicher hinzufügen*: Behalten Sie die Standard-Speicheroptionen.
+** *Tags hinzufügen*: Geben Sie bei Bedarf Tags für die Instanz ein.
+** *Sicherheitsgruppe konfigurieren*: Geben Sie die erforderlichen Verbindungsmethoden für die Cloud Manager-Instanz an: SSH, HTTP und HTTPS.
+** *Review*: Überprüfen Sie Ihre Auswahl und klicken Sie auf *Start*.
++
+AWS startet die Software mit den angegebenen Einstellungen. Die Cloud Manager-Instanz und -Software sollten in etwa fünf Minuten ausgeführt werden.
+
+
+
+. Öffnen Sie einen Webbrowser von einem Host aus, der eine Verbindung zur virtuellen Cloud Manager-Maschine hat, und geben Sie die folgende URL ein:
++
+http://_ipaddress_:80[]
+
+. Richten Sie Cloud Manager nach dem Einloggen ein:
++
+.. Geben Sie das Cloud Central-Konto an, das mit diesem Cloud Manager-System verknüpft werden soll.
++
+link:concept_cloud_central_accounts.html["Weitere Informationen zu Cloud Central Accounts"].
+
+.. Geben Sie einen Namen für das System ein.
++
+image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Cloud Manager einrichten zeigt, in dem Sie ein Cloud Central Konto auswählen und das Cloud Manager System benennen können."]
+
+
+
+
+
+Cloud Manager ist jetzt installiert und eingerichtet.

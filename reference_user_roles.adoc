@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: reference_user_roles.html 
+keywords: user, users, roles, role, task, permission, permissions, tasks, admin, Account Admin, Workspace Admin 
+summary: Die Rollen Kontoadministrator und Workspace-Administrator bieten Benutzern spezifische Berechtigungen. 
+translate: false 
+---
+= Rollen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Rollen Kontoadministrator und Workspace-Administrator bieten Benutzern spezifische Berechtigungen.
+
+[cols="34,33,33"]
+|===
+| Aufgabe | Kontoadministrator | Workspace-Verwaltung 
+
+
+| Verwalten von Arbeitsumgebungen | Ja. | Ja, für die zugehörigen Arbeitsbereiche 
+
+
+| Anzeigen des Status der Datenreplizierung | Ja. | Ja, für die zugehörigen Arbeitsbereiche 
+
+
+| Zeitachse anzeigen | Ja. | Ja, für die zugehörigen Arbeitsbereiche 
+
+
+| Arbeitsumgebungen löschen | Ja. | Nein 
+
+
+| Kubernetes-Cluster mit Cloud Volumes ONTAP verbinden | Ja. | Nein 
+
+
+| Cloud Volumes ONTAP Bericht erhalten | Ja. | Nein 
+
+
+| Managen von Cloud Central Konten | Ja. | Nein 
+
+
+| Konten von Cloud-Providern verwalten | Ja. | Nein 
+
+
+| Ändern der Cloud Manager-Einstellungen | Ja. | Nein 
+
+
+| Anzeigen und Verwalten des Support-Dashboards | Ja. | Nein 
+
+
+| Entfernen Sie Arbeitsumgebungen aus Cloud Manager | Ja. | Nein 
+
+
+| Aktualisieren Sie Cloud Manager | Ja. | Nein 
+
+
+| Installieren Sie ein HTTPS-Zertifikat | Ja. | Nein 
+
+
+| Einrichten von Active Directory | Ja. | Nein 
+|===
+.Weiterführende Links
+* link:task_setting_up_cloud_central_accounts.html["Einrichtung von Workspaces und Benutzern im Cloud Central Konto"]
+* link:task_managing_cloud_central_accounts.html["Managen von Workspaces und Benutzern im Cloud Central Konto"]
+

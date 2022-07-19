@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: task_installing_azure_germany.html 
+keywords: install, installation, installing, linux, installer, software, germany, azure, region 
+summary: Der Azure Marketplace ist in Azure Deutschland nicht verfügbar. Daher müssen Sie das Cloud Manager Installationsprogramm von der NetApp Support Site herunterladen und auf einem vorhandenen Linux-Host in der Region installieren. 
+---
+= Installieren von Cloud Manager in einer Azure Deutschland Region
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Azure Marketplace ist in den Regionen von Azure Deutschland nicht verfügbar. Sie müssen daher das Cloud Manager-Installationsprogramm von der NetApp Support-Website herunterladen und auf einem vorhandenen Linux-Host in der Region installieren.
+
+.Schritte
+. link:reference_networking_azure.html["Netzwerkanforderungen für Azure prüfen"].
+. link:reference_cloud_mgr_reqs.html["Host-Anforderungen für Cloud Manager prüfen"].
+. link:task_installing_linux.html["Laden Sie Cloud Manager herunter und installieren Sie es"].
+. link:task_adding_azure_accounts.html["Gewähren Sie Cloud Manager Azure Berechtigungen mit einem Service-Principal"].
+
+
+Cloud Manager ist jetzt bereit, Cloud Volumes ONTAP wie jede andere Region in Azure Deutschland zu implementieren. Möglicherweise möchten Sie jedoch zuerst ein zusätzliches Setup durchführen.

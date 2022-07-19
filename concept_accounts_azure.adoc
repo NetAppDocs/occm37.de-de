@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: concept_accounts_azure.html 
+keywords: cloud provider accounts, azure, azure accounts, service principal, multiple accounts, permissions, policy, policies, subscriptions 
+summary: Mit Cloud Manager können Sie das Azure Konto auswählen, in dem Sie ein Cloud Volumes ONTAP System implementieren möchten. Sie können alle Ihre Cloud Volumes ONTAP Systeme über das erste Azure Konto oder weitere Konten einrichten. 
+---
+= Azure-Konten und Berechtigungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit Cloud Manager können Sie das Azure Konto auswählen, in dem Sie ein Cloud Volumes ONTAP System implementieren möchten. Sie können alle Ihre Cloud Volumes ONTAP Systeme über das erste Azure Konto oder weitere Konten einrichten.
+
+
+
+== Zunächst das Azure-Konto
+
+Wenn Sie Cloud Manager über NetApp Cloud Central implementieren, müssen Sie ein Azure Konto verwenden, das über Berechtigungen zum Bereitstellen der Virtual Machine von Cloud Manager verfügt. Die erforderlichen Berechtigungen werden im aufgeführt https://mysupport.netapp.com/cloudontap/iampolicies["NetApp Cloud Central-Richtlinie für Azure"^].
+
+Wenn Cloud Central die Virtual Machine Cloud Manager in Azure implementiert, wird damit eine aktiviert https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Vom System zugewiesene verwaltete Identität"^] Erstellt auf der Cloud Manager Virtual Machine eine benutzerdefinierte Rolle und weist sie der Virtual Machine zu. Die Rolle bietet Cloud Manager Berechtigungen für die Implementierung und das Management von Cloud Volumes ONTAP in diesem Azure Abonnement. link:reference_permissions.html#what-cloud-manager-does-with-azure-permissions["Überprüfen Sie, wie Cloud Manager die Berechtigungen verwendet"].
+
+image:diagram_permissions_initial_azure.png["Ein Konzept-Image, das Cloud Central zeigt, das Cloud Manager in einem Azure Konto und Abonnement bereitstellt. Eine vom System zugewiesene verwaltete Identität wird aktiviert und der virtuellen Maschine von Cloud Manager eine benutzerdefinierte Rolle zugewiesen."]
+
+Cloud Manager wählt bei der Erstellung einer neuen Arbeitsumgebung standardmäßig dieses Cloud-Provider-Konto aus:
+
+image:screenshot_accounts_select_azure.gif["Ein Screenshot, in dem die Option Konto wechseln auf der Seite Details  Credentials angezeigt wird."]
+
+
+
+== Zusätzliche Azure-Abonnements für das Erstkonto
+
+Die verwaltete Identität ist mit dem Abonnement verknüpft, in dem Sie Cloud Manager gestartet haben. Wenn Sie ein anderes Azure Abonnement auswählen möchten, müssen Sie es ausführen link:task_adding_azure_accounts.html#associating-additional-azure-subscriptions-with-a-managed-identity["Verknüpfen Sie die verwaltete Identität mit diesen Abonnements"].
+
+
+
+== Zusätzliche Azure-Konten
+
+Wenn Sie Cloud Volumes ONTAP in verschiedenen Azure Accounts implementieren möchten, müssen Sie die erforderlichen Berechtigungen von erteilen link:task_adding_azure_accounts.html["Erstellen und Einrichten eines Service Principal in Azure Active Directory"] Für jedes Azure Konto. Das folgende Bild zeigt zwei zusätzliche Konten, die jeweils mit einer Dienstprinzipal- und einer benutzerdefinierten Rolle eingerichtet sind, die Berechtigungen bereitstellt:
+
+image:diagram_permissions_multiple_azure.png["Ein konzeptionelles Image, das den ersten Azure Account zeigt und über eine benutzerdefinierte Rolle und gemanagte Identität Berechtigungen erhält, und zwei zusätzliche Konten, die über eine benutzerdefinierte Rolle und einen Serviceprincipal Berechtigungen erhalten."]
+
+Das würden Sie dann tun link:task_adding_azure_accounts.html#adding-azure-accounts-to-cloud-manager["Fügen Sie die Cloud-Provider-Konten zu Cloud Manager hinzu"] Durch Angabe von Details zum AD-Dienstprinzipal.
+
+Nachdem Sie ein weiteres Konto hinzugefügt haben, können Sie zu diesem wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:
+
+image:screenshot_accounts_switch_azure.gif["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]
+
+.Wie sieht es mit Marketplace-Implementierungen und On-Premises-Implementierungen aus?
+****
+In den obigen Abschnitten wird die empfohlene Implementierungsmethode von NetApp Cloud Central beschrieben. Sie können Cloud Manager auch in Azure über die implementieren link:task_launching_azure_mktp.html["Azure Marketplace"], Und Sie können link:task_installing_linux.html["Installation von Cloud Manager vor Ort"].
+
+Wenn Sie den Marktplatz nutzen, werden Berechtigungen auf die gleiche Weise bereitgestellt. Sie müssen lediglich die verwaltete Identität für Cloud Manager manuell erstellen und einrichten und dann Berechtigungen für weitere Konten bereitstellen.
+
+Bei On-Premises-Implementierungen können Sie keine verwaltete Identität für das Cloud Manager-System einrichten, Sie können jedoch Berechtigungen wie bei zusätzlichen Konten bereitstellen.
+
+****

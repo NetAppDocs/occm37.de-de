@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+summary: Willkommen beim Dokumentationsportal für Cloud Manager und Cloud Volumes ONTAP. 
+---
+= Cloud Manager und Cloud Volumes ONTAP Dokumentation
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Mit Cloud Manager können Sie NetApp Cloud Volumes ONTAP implementieren und managen – eine Datenmanagement-Lösung mit Schutz, Sichtbarkeit und Kontrolle für Ihre Cloud-basierten Workloads.
+
+
+
+== Entdecken Sie, was neu ist
+
+* link:reference_new_occm.html["Neuerungen in Cloud Manager"]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_97.html["Neuerungen in Cloud Volumes ONTAP"^]
+
+
+
+
+== Los geht's
+
+* link:task_getting_started_aws.html["Erste Schritte in AWS"]
+* link:task_getting_started_azure.html["Erste Schritte in Azure"]
+* link:task_getting_started_gcp.html["Erste Schritte mit der Google Cloud Platform"]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["Suchen Sie nach unterstützten Konfigurationen für Cloud Volumes ONTAP"^]
+* link:reference_networking_cloud_manager.html["Netzwerkanforderungen für Cloud Manager prüfen"]
+* link:reference_networking_aws.html["Netzwerkanforderungen für Cloud Volumes ONTAP für AWS prüfen"]
+* link:reference_networking_azure.html["Netzwerkanforderungen für Cloud Volumes ONTAP für Azure prüfen"]
+* link:reference_networking_gcp.html["Netzwerkanforderungen für Cloud Volumes ONTAP für GCP prüfen"]
+* link:task_planning_your_config.html["Planen Sie Ihre Cloud Volumes ONTAP Konfiguration"]
+
+
+
+
+== Automatisierung mit APIs
+
+* link:api.html["API-Entwicklerhandbuch"^]
+* link:reference_infrastructure_as_code.html["Automationsbeispiele"]
+
+
+
+
+== Treten Sie mit Kollegen in Kontakt, holen Sie sich Hilfe und finden Sie weitere Informationen
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS["NetApp Community: Cloud Data Services"^]
+* https://mysupport.netapp.com/cloudontap["NetApp Cloud Volumes ONTAP Support"^]
+* link:reference_additional_info.html["Wo Sie Hilfe und weitere Informationen erhalten"]
+

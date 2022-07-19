@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: task_configuring_proxy.html 
+keywords: proxy, proxy server, proxy, internet 
+summary: Wenn Sie Cloud Manager zum ersten Mal implementieren, werden Sie aufgefordert, einen Proxyserver einzugeben, wenn das System nicht über einen Internetzugang verfügt. Sie können den Proxy auch manuell unter den Einstellungen von Cloud Manager eingeben und ändern. 
+---
+= Konfigurieren von Cloud Manager für die Verwendung eines Proxyservers
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie Cloud Manager zum ersten Mal implementieren, werden Sie aufgefordert, einen Proxyserver einzugeben, wenn das System nicht über einen Internetzugang verfügt. Sie können den Proxy auch manuell unter den Einstellungen von Cloud Manager eingeben und ändern.
+
+Wenn Ihre Unternehmensrichtlinien vorschreiben, dass Sie einen Proxyserver für die gesamte HTTP-Kommunikation mit dem Internet verwenden, müssen Sie Cloud Manager so konfigurieren, dass dieser Proxyserver verwendet wird. Der Proxyserver kann sich in der Cloud oder im Netzwerk befinden.
+
+Wenn Sie Cloud Manager für die Verwendung eines Proxy-Servers konfigurieren, verwenden Cloud Manager, Cloud Volumes ONTAP und der HA-Vermittler den Proxy-Server.
+
+.Schritte
+. Klicken Sie oben rechts in der Cloud Manager-Konsole auf das Symbol Einstellungen und wählen Sie *Cloud Manager-Einstellungen*.
++
+image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol „Einstellungen“ oben rechts in der Cloud Manager Konsole angezeigt wird."]
+
+. Geben Sie unter HTTP Proxy den Server mithilfe der Syntax ein http://_address:port_[]Geben Sie einen Benutzernamen und ein Passwort an, wenn eine grundlegende Authentifizierung für den Server erforderlich ist, und klicken Sie dann auf *Speichern*.
++
+
+NOTE: Cloud Manager unterstützt keine Kennwörter, die das Zeichen @ enthalten.
+
+
+
+Nachdem Sie den Proxyserver angegeben haben, werden neue Cloud Volumes ONTAP Systeme automatisch so konfiguriert, dass sie den Proxyserver beim Senden von AutoSupport Nachrichten verwenden. Wenn Sie den Proxyserver nicht angeben, bevor Benutzer Cloud Volumes ONTAP Systeme erstellen, müssen sie den Proxyserver mithilfe von System Manager manuell in den AutoSupport-Optionen für jedes System festlegen.

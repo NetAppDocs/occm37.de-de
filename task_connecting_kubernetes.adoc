@@ -1,0 +1,101 @@
+---
+pagenav: false 
+sidebar: sidebar 
+permalink: task_connecting_kubernetes.html 
+keywords: kubernetes, persistent volumes, containers, persistent storage, kubeconfig, trident, kubernetes cluster, storage classes, classes, cvo-single, cvo-ha, thick provisioning, trident_trident, connect, disconnect, provision 
+summary: Cloud Manager kann die Implementierung von NetApp Trident auf Kubernetes-Clustern automatisieren, sodass Sie ONTAP als persistenten Storage für Container verwenden können. Dies funktioniert mit Cloud Volumes ONTAP und On-Premises-ONTAP-Clustern. Erste Schritte umfassen einige Schritte. 
+---
+= Verwendung von ONTAP als persistenter Storage für Kubernetes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager kann die Implementierung von automatisieren https://netapp-trident.readthedocs.io/en/stable-v18.10/introduction.html["NetApp Trident"^] Auf Kubernetes-Clustern zur Verwendung von ONTAP als persistenten Storage für Container Dies funktioniert mit Cloud Volumes ONTAP und On-Premises-ONTAP-Clustern.
+
+Bevor Sie diese Schritte ausführen, müssen Sie sie ausführen link:reference_before.html["Erstellen eines Cloud Volumes ONTAP Systems"] Oder link:task_discovering_ontap.html["Ermitteln eines lokalen ONTAP Clusters"] Von Cloud Manager
+
+Bei der Implementierung von Kubernetes-Clustern mit dem https://cloud.netapp.com/kubernetes-service["NetApp Kubernetes Service"^], Cloud Manager kann die Cluster automatisch aus Ihrem NetApp Cloud Central Konto erkennen. Wenn das der Fall ist, überspringen Sie die ersten beiden Schritte und beginnen Sie mit Schritt 3.
+
+
+
+=== Netzwerk-Konnektivität prüfen
+
+. Zwischen Cloud Manager und den Kubernetes-Clustern und den ONTAP-Clustern muss eine Netzwerkverbindung verfügbar sein.
+. Bei der Installation von Trident ist eine ausgehende Internetverbindung erforderlich, um auf die folgenden Endpunkte zuzugreifen:
++
+\https://packages.cloud.google.com/yum \https://github.com/NetApp/trident/releases/download/
+
++
+Cloud Manager installiert Trident auf einem Kubernetes-Cluster, wenn Sie eine Arbeitsumgebung mit dem Cluster verbinden.
+
+
+
+
+
+=== Kubernetes-Konfigurationsdateien in Cloud Manager hochladen
+
+[role="quick-margin-para"]
+Der Account Admin muss für jeden Kubernetes eine Konfigurationsdatei (kubeconfig) im YAML-Format hochladen. Nach dem Hochladen der Datei überprüft Cloud Manager die Verbindung zum Cluster und speichert eine verschlüsselte Kopie der kubeconfig-Datei.
+
+[role="quick-margin-para"]
+Klicken Sie auf *Kubernetes Clusters > Entdecken > Datei hochladen* und wählen Sie die kubeconfig-Datei aus.
+
+[role="quick-margin-para"]
+image:screenshot_kubernetes_setup.gif["Ein Screenshot, der die Registerkarte „Kubernetes Cluster“ mit einer Schaltfläche „Entdecken“ und dann den Bildschirm anzeigt, auf dem Sie auf „Datei hochladen“ klicken, um die kubeconfig-Datei hochzuladen."]
+
+
+
+=== Verbinden Sie Ihre Arbeitsumgebungen mit Kubernetes-Clustern
+
+[role="quick-margin-para"]
+Klicken Sie in der Arbeitsumgebung auf das Kubernetes-Symbol und folgen Sie den Aufforderungen. Sie können verschiedene Cluster mit verschiedenen ONTAP Systemen und mehreren Clustern mit demselben ONTAP System verbinden.
+
+[role="quick-margin-para"]
+Sie haben die Möglichkeit, die NetApp Storage-Klasse als Standard-Storage-Klasse für den Kubernetes Cluster einzustellen. Wenn ein Benutzer ein persistentes Volume erstellt, kann der Kubernetes-Cluster standardmäßig verbundene ONTAP-Systeme als Back-End-Storage verwenden.
+
+[role="quick-margin-para"]
+image:screenshot_kubernetes_connect.gif["Screenshot mit dem Kubernetes-Symbol in der und in der Cloud Volumes ONTAP Arbeitsumgebung und auf der folgenden Seite, auf der Sie ein Kubernetes-Cluster auswählen können, und klicken Sie anschließend auf Verbinden."]
+
+
+
+=== Starten Sie die Bereitstellung persistenter Volumes
+
+[role="quick-margin-para"]
+Persistente Volumes können über native Kubernetes-Schnittstellen und -Konstrukte angefordert und gemanagt werden. Cloud Manager erstellt vier Kubernetes-Storage-Klassen, die bei der Provisionierung von persistenten Volumes genutzt werden können:
+
+* *netapp-File*: Zur Anbindung persistenter Volumes an ONTAP-Systeme mit einem Node
+* *netapp-File-san*: Zur Anbindung persistenter iSCSI-Volumes an Single-Node-ONTAP-Systeme
+* *netapp-file-redundant*: Zur Anbindung persistenter Volumes an ONTAP HA-Paare
+* *netapp-file-redundant-san*: Zur Anbindung persistenter iSCSI-Volumes an ONTAP HA-Paare
+
+
+[role="quick-margin-para"]
+Cloud Manager konfiguriert Trident standardmäßig für die Verwendung folgender Bereitstellungsoptionen:
+
+* Thin Volumes
+* Die standardmäßige Snapshot-Richtlinie
+* Verzeichnis für zugängliche Snapshots
+
+
+[role="quick-margin-para"]
+https://netapp-trident.readthedocs.io/["Erfahren Sie mehr über die Bereitstellung Ihres ersten Volumes mit Trident für Kubernetes"^]
+
+.Was sind die Dreizack_Trident Volumes?
+****
+Cloud Manager erstellt ein Volume auf dem ersten ONTAP System, das Sie mit einem Kubernetes-Cluster verbinden. Der Name des Volumes wird mit „_Trident_dreident_dreident“ angehängt. ONTAP verwendet dieses Volume, um die Verbindung zum Kubernetes-Cluster herzustellen. Diese Volumes sollten nicht gelöscht werden.
+
+****
+.Was geschieht, wenn Sie ein Kubernetes Cluster trennen oder entfernen?
+****
+Mit Cloud Manager können Sie einzelne ONTAP Systeme von einem Kubernetes Cluster trennen. Wenn Sie ein System trennen, können Sie dieses ONTAP System nicht mehr als persistenten Storage für Container verwenden. Vorhandene persistente Volumes werden nicht gelöscht.
+
+Nachdem Sie alle Systeme von einem Kubernetes-Cluster getrennt haben, können Sie auch die gesamte Kubernetes-Konfiguration aus Cloud Manager entfernen. Cloud Manager deinstalliert Trident nicht, wenn Sie den Cluster entfernen und keine persistenten Volumes gelöscht werden.
+
+Beide Aktionen sind nur über APIs verfügbar. Wir planen, die Aktionen in einer zukünftigen Version der Schnittstelle hinzuzufügen.link:api.html#_kubernetes["Klicken Sie hier, um weitere Informationen zu den APIs zu erhalten"].
+
+****

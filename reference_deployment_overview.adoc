@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: reference_deployment_overview.html 
+keywords: installation, installing, install, setting up, set up, setup, deploy, deployment, c2s, commerical cloud services, ic, intelligence community 
+summary: Bevor Sie beginnen, möchten Sie sich möglicherweise besser über Ihre Optionen für die Implementierung von Cloud Manager und Cloud Volumes ONTAP informieren. 
+---
+= Implementierungsübersicht
+:toc: macro
+:hardbreaks:
+:allow-uri-read: 
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Bevor Sie beginnen, möchten Sie sich möglicherweise besser über Ihre Optionen für die Implementierung von Cloud Manager und Cloud Volumes ONTAP informieren.
+
+
+
+== Installation von Cloud Manager
+
+Cloud Manager Software ist für die Implementierung und das Management von Cloud Volumes ONTAP erforderlich. Sie können Cloud Manager an einem der folgenden Standorte bereitstellen:
+
+* Amazon Web Services (AWS)
+* Microsoft Azure
+* Google Cloud Platform
++
+Cloud Manager muss sich bei der Implementierung von Cloud Volumes ONTAP in GCP in der Google Cloud Platform befinden.
+
+* IBM Cloud
+* In Ihrem eigenen Netzwerk
+
+
+Wie Sie Cloud Manager implementieren, hängt davon ab, für welchen Standort Sie sich entscheiden:
+
+[cols="35,65"]
+|===
+| Standort für Cloud Manager | So implementieren Sie Cloud Manager 
+
+
+| AWS  a| 
+. link:task_getting_started_aws.html["Cloud Manager über NetApp Cloud Central implementieren"] (Empfohlen)
+. link:task_launching_aws_mktp.html["Implementierung über AWS Marketplace"]
+. link:task_installing_linux.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"]
+
+
+
+
+| AWS C2S | link:media/c2s.pdf["Implementieren Sie Cloud Manager über den AWS Intelligence Community Marketplace"^] 
+
+
+| Azure allgemein verfügbare Region  a| 
+. link:task_getting_started_azure.html["Cloud Manager über NetApp Cloud Central implementieren"] (Empfohlen)
+. link:task_launching_azure_mktp.html["Implementieren Sie sie im Azure Marketplace"]
+. link:task_installing_linux.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"]
+
+
+
+
+| Azure Government | link:task_installing_azure_gov.html["Implementieren von Cloud Manager über den Azure US Government Marketplace"] 
+
+
+| Azure Deutschland | link:task_installing_azure_germany.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"] 
+
+
+| Google Cloud Platform  a| 
+. link:task_getting_started_gcp.html["Cloud Manager über NetApp Cloud Central implementieren"] (Empfohlen)
+. link:task_installing_linux.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"]
+
+
+
+NOTE: Die Implementierung von Cloud Manager in der Google Cloud ist über GCP Marketplace nicht möglich
+
+
+
+| IBM Cloud | link:task_installing_linux.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"] 
+
+
+| Des On-Premises-Netzwerks | link:task_installing_linux.html["Laden Sie die Software auf einem Linux-Host herunter, und installieren Sie sie"] 
+|===
+
+
+== Einrichtung von Cloud Manager
+
+Möglicherweise möchten Sie nach der Installation von Cloud Manager zusätzliche Einrichtung durchführen, z. B. das Hinzufügen weiterer Cloud-Provider-Konten, das Installieren eines HTTPS-Zertifikats und mehr.
+
+* link:task_setting_up_cloud_central_accounts.html["Einrichten Ihres Cloud Central Kontos"]
+* link:task_adding_aws_accounts.html["Hinzufügen von AWS Konten zu Cloud Manager"]
+* link:task_adding_azure_accounts.html["Hinzufügen von Azure-Konten zu Cloud Manager"]
+* link:task_installing_https_cert.html["Installieren eines HTTPS-Zertifikats"]
+* link:task_setting_up_kms.html["Einrichten des AWS KMS"]
+
+
+
+
+== Implementierung von Cloud Volumes ONTAP
+
+Nachdem Cloud Manager betriebsbereit war, können Sie mit der Implementierung von Cloud Volumes ONTAP bei Ihrem Cloud-Provider beginnen.
+
+link:task_getting_started_aws.html["Erste Schritte in AWS"], link:task_getting_started_azure.html["Erste Schritte in Azure"], und link:task_getting_started_gcp.html["Erste Schritte in GCP"] Anweisungen zur schnellen Inbetriebnahme von Cloud Volumes ONTAP Weitere Hilfe finden Sie unter:
+
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_configs_aws_97.html["Unterstützte Konfigurationen für Cloud Volumes ONTAP 9.7 in AWS"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_configs_azure_97.html["Unterstützte Konfigurationen für Cloud Volumes ONTAP 9.7 in Azure"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_configs_gcp_97.html["Unterstützte Konfigurationen für Cloud Volumes ONTAP 9.7 in GCP"^]
+* link:task_planning_your_config.html["Planung Ihrer Konfiguration"]
+* link:task_deploying_otc_aws.html["Starten von Cloud Volumes ONTAP in AWS"]
+* link:task_deploying_otc_azure.html["Starten von Cloud Volumes ONTAP in Azure"]
+* link:task_deploying_gcp.html["Einführung von Cloud Volumes ONTAP in GCP"]
+

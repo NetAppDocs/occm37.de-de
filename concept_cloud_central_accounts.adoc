@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: concept_cloud_central_accounts.html 
+keywords: accounts, workspaces, service connector, users, cloud central, admin, Account Admin, Workspace Admin 
+summary: Jedes Cloud Manager System ist einem NetApp Cloud Central Konto zugeordnet. Ein Cloud Central Konto ist ein Container für Ihre Cloud Manager Systeme und die Arbeitsbereiche, in denen Benutzer Cloud Volumes ONTAP implementieren. 
+---
+= Accounts in Cloud Central
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Jedes Cloud Manager System ist einem _NetApp Cloud Central Account_ zugeordnet. Ein Cloud Central Konto bietet Mandantenfähigkeit und ermöglicht es Ihnen, Benutzer und Ressourcen in isolierten Workspaces zu organisieren.
+
+Ein Cloud Central Konto ermöglicht Mandantenfähigkeit:
+
+* Ein einzelnes Cloud Central Konto kann mehrere Cloud Manager Systeme enthalten, die unterschiedliche geschäftliche Anforderungen erfüllen.
++
+Da Benutzer mit dem Cloud Central Konto verknüpft sind, müssen keine Benutzer für jedes einzelne Cloud Manager System konfiguriert werden.
+
+* Innerhalb jedes Cloud Manager Systems können mehrere Benutzer Cloud Volumes ONTAP Systeme in isolierten Umgebungen bereitstellen und managen, die als Workspaces bezeichnet werden.
++
+Diese Arbeitsbereiche sind für andere Benutzer unsichtbar, es sei denn, sie werden gemeinsam genutzt.
+
+
+
+Wenn Sie Cloud Manager implementieren, wählen Sie das Cloud Central-Konto aus, das mit dem System verknüpft werden soll:
+
+image:screenshot_account_selection.gif["Screenshot aus dem Cloud Manager Setup-Assistenten, in dem Sie zum Cloud Central Konto aufgefordert werden, in dem Sie Cloud Manager erstellen möchten."]
+
+Kontoadministratoren können dann die Einstellungen für dieses Konto ändern, indem sie Benutzer, Arbeitsbereiche und Serviceanschlüsse verwalten:
+
+image:screenshot_account_settings.gif["Ein Screenshot mit dem Widget „Kontoeinstellungen“, über das Sie Benutzer, Arbeitsbereiche und Dienstverbindungen verwalten können."]
+
+Schritt-für-Schritt-Anweisungen finden Sie unter link:task_setting_up_cloud_central_accounts.html["Einrichten des Cloud Central Kontos"].
+
+
+NOTE: Für die Verbindung mit dem Cloud Central Account Service benötigt Cloud Manager Zugriff auf _\https://cloudmanager.cloud.netapp.com_. Öffnen Sie diese URL in Ihrer Firewall, um sicherzustellen, dass Cloud Manager den Service kontaktieren kann.
+
+
+
+== Benutzer, Arbeitsbereiche und Serviceanschlüsse
+
+Im Widget „Account Settings“ in Cloud Manager können Kontoadministratoren ein Cloud Central Konto verwalten. Wenn Sie gerade Ihr Konto erstellt, dann beginnen Sie von Grund auf. Wenn Sie jedoch bereits ein Konto eingerichtet haben, sehen Sie _all_ die Benutzer, Arbeitsbereiche und Dienstverbindungen, die mit dem Konto verknüpft sind.
+
+Benutzer:: Dies sind NetApp Cloud Central Benutzer, die Sie mit Ihrem Cloud Central Konto verknüpfen. Wenn ein Benutzer mit einem Konto und einem oder mehreren Arbeitsbereichen dieses Kontos verknüpft wird, können diese Benutzer Arbeitsumgebungen in Cloud Manager erstellen und verwalten.
++
+--
+Wenn Sie einen Benutzer zuordnen, weisen Sie ihm eine Rolle zu:
+
+* _Account Admin_: Kann jede Aktion im Cloud Manager ausführen.
+* _Workspace Admin_: Kann Ressourcen im zugewiesenen Arbeitsbereich erstellen und verwalten.
+
+
+--
+Arbeitsbereiche:: In Cloud Manager isoliert ein Arbeitsbereich beliebig viele _Arbeitsumgebungen_ aus anderen Arbeitsumgebungen. Workspace-Administratoren können nicht auf die Arbeitsumgebungen in einem Arbeitsbereich zugreifen, es sei denn, der Kontoadministrator ordnet den Administrator diesem Arbeitsbereich zu.
++
+--
+Eine Arbeitsumgebung ist ein Speichersystem:
+
+* Single Node Cloud Volumes ONTAP System oder ein HA-Paar
+* Ein On-Premises ONTAP Cluster in Ihrem Netzwerk
+* Ein ONTAP Cluster in einer NetApp Private Storage-Konfiguration
+
+
+--
+Wartungsanschlüsse:: Ein Service-Connector ist Teil von Cloud Manager. Es wird ein Großteil der Cloud Manager-Software ausgeführt (wie die Benutzeroberfläche), mit Ausnahme einiger Cloud Central-Dienste, mit denen eine Verbindung hergestellt wird (auth0- und Cloud Central-Konten). Der Service-Connector wird auf der Virtual-Machine-Instanz ausgeführt, die bei Ihrem Cloud-Provider oder auf einem von Ihnen konfigurierten On-Premises-Host implementiert wurde.
++
+--
+Sie können einen Service-Connector mit mehr als einem NetApp Cloud-Datenservice verwenden. Wenn Sie beispielsweise bereits über einen Service-Connector für Cloud Manager verfügen, können Sie ihn beim Einrichten des Cloud Tiering-Service auswählen.
+
+--
+
+
+
+
+== Beispiele
+
+Das folgende Beispiel zeigt ein Konto, das zwei Arbeitsbereiche zum Erstellen isolierter Umgebungen für Cloud Volumes ONTAP-Systeme verwendet. Ein Arbeitsbereich könnte beispielsweise für eine Staging-Umgebung sein, der andere für eine Produktionsumgebung.
+
+
+NOTE: Cloud Manager und die Cloud Volumes ONTAP Systeme befinden sich nicht _in_ dem NetApp Cloud Central Konto - sie laufen bei einem Cloud-Provider. Dies ist eine konzeptionelle Darstellung der Beziehung zwischen den einzelnen Komponenten.
+
+image:diagram_cloud_central_accounts_one.png["Ein Diagramm mit einem einzelnen Cloud Central Konto, das zwei Arbeitsbereiche enthält. Jeder Arbeitsbereich ist mit dem gleichen Service-Anschluss verknüpft, und jeder hat seinen eigenen Workspace-Administrator"]
+
+Das hier ist ein weiteres Beispiel, das die höchste Mandantenfähigkeit mit zwei separaten Cloud Central Konten belegt. Ein Service-Provider kann beispielsweise Cloud Manager in einem Cloud Central Konto nutzen, um seinen Kunden Services bereitzustellen, während er ein anderes Konto verwendet, um eine Disaster Recovery für eine ihrer Geschäftsbereiche zu bieten.
+
+Bitte beachten Sie, dass Konto 2 zwei separate Serviceanschlüsse enthält. Dies kann passieren, wenn Systeme in verschiedenen Regionen oder separaten Cloud-Providern vorhanden sind.
+
+
+NOTE: Und wieder: Cloud Manager und die Cloud Volumes ONTAP Systeme befinden sich nicht _in_ dem NetApp Cloud Central Konto - sie laufen bei einem Cloud-Provider. Dies ist eine konzeptionelle Darstellung der Beziehung zwischen den einzelnen Komponenten.
+
+image:diagram_cloud_central_accounts_two.png["Ein Diagramm mit zwei Cloud Central-Konten, die jeweils über mehrere Workspaces und zugehörigen Workspace-Administratoren verfügen."]
+
+
+
+== FAQ zur Integration mit Cloud Central Accounts
+
+Einige Zeit nach dem Upgrade auf Cloud Manager 3.7 wählt NetApp bestimmte Cloud Manager Systeme für die Integration mit Cloud Central Konten. In dieser FAQ können Sie Fragen zu diesem Prozess beantworten.
+
+
+
+=== Wie lange dauert dieser Prozess?
+
+In wenigen Minuten.
+
+
+
+=== Ist Cloud Manager nicht verfügbar?
+
+Nein, Sie können weiterhin auf Ihr Cloud Manager System zugreifen.
+
+
+
+=== Wie sieht es mit Cloud Volumes ONTAP aus?
+
+Cloud Volumes ONTAP Systeme werden unterbrechungsfrei zugewiesen.
+
+
+
+=== Was passiert während dieses Prozesses?
+
+NetApp führt während des Integrationsprozesses folgende Maßnahmen durch:
+
+. Erstellt ein neues Cloud Central-Konto und ordnet es Ihrem Cloud Manager-System zu.
+. Weist jedem vorhandenen Benutzer neue Rollen zu:
++
+** Cloud Manager-Administratoren werden zu Account-Administratoren
+** Mandantenadministratoren und -Umgebungadministratoren werden zu Workspace-Administratoren
+
+
+. Einrichtung von Workspaces, die vorhandene Mandanten ersetzen
+. Stellt Ihre Arbeitsumgebungen in diese Arbeitsbereiche.
+. Verknüpft den Serviceanschluss mit allen Arbeitsbereichen.
+
+
+
+
+=== Spielt es eine Rolle, wo ich mein Cloud Manager-System installiert habe?
+
+Nein NetApp integriert Systeme in Cloud Central Konten, unabhängig davon, wo sie sich befinden, ob in AWS, Azure oder vor Ort.
