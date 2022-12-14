@@ -23,4 +23,5 @@ Der Azure Marketplace ist in den Regionen von Azure Deutschland nicht verfügbar
 . link:task_adding_azure_accounts.html["Gewähren Sie Cloud Manager Azure Berechtigungen mit einem Service-Principal"].
 
 
+.Nachdem Sie fertig sind
 Cloud Manager ist jetzt bereit, Cloud Volumes ONTAP wie jede andere Region in Azure Deutschland zu implementieren. Möglicherweise möchten Sie jedoch zuerst ein zusätzliches Setup durchführen.

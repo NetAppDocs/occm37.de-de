@@ -40,6 +40,7 @@ image:screenshot_privacy_risk_assessment.gif["Ein Screenshot der Registerkarte C
 
 
 
+.Ergebnis
 Cloud Compliance generiert einen PDF-Bericht, den Sie nach Bedarf prüfen und an andere Gruppen senden können.
 
 

@@ -24,8 +24,9 @@ Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den ve
 
 
 
-==== Vergewissern Sie sich, dass Ihre Konfiguration den Anforderungen entspricht
+==== image:number1.png["Nummer 1"] Vergewissern Sie sich, dass Ihre Konfiguration den Anforderungen entspricht
 
+[role="quick-margin-list"]
 * Stellen Sie sicher, dass die Cloud-Compliance-Instanz über Outbound-Internetzugang verfügt.
 +
 Cloud Manager implementiert die Instanz in derselben VPC oder vnet wie das erste Cloud Volumes ONTAP System in der Anforderung.
@@ -36,19 +37,21 @@ Cloud Manager implementiert die Instanz in derselben VPC oder vnet wie das erste
 
 
 
-==== Aktivierung von Cloud Compliance für Cloud Volumes ONTAP
+==== image:number2.png["Nummer 2"] Aktivierung von Cloud Compliance für Cloud Volumes ONTAP
 
+[role="quick-margin-list"]
 * Neue Arbeitsumgebungen: Stellen Sie sicher, dass Cloud Compliance aktiviert ist, wenn Sie die Arbeitsumgebung erstellen (es ist standardmäßig aktiviert).
 * Bestehende Arbeitsumgebungen: Klicken Sie auf *Compliance*, bearbeiten Sie optional die Liste der Arbeitsumgebungen und klicken Sie auf *Compliance Dashboard anzeigen*.
 
 
 
 
-==== Zugriff auf Volumes sicherstellen
+==== image:number3.png["Nummer 3"] Zugriff auf Volumes sicherstellen
 
 [role="quick-margin-para"]
 Jetzt, wo Cloud Compliance aktiviert ist, stellen Sie sicher, dass die IT auf Volumes zugreifen kann.
 
+[role="quick-margin-list"]
 * Die Cloud Compliance Instanz benötigt eine Netzwerkverbindung zu jedem Cloud Volumes ONTAP Subnetz.
 * Sicherheitsgruppen für Cloud Volumes ONTAP müssen eingehende Verbindungen aus der Cloud-Compliance-Instanz zulassen.
 * Die NFS Volume-Exportrichtlinien müssen den Zugriff aus der Cloud Compliance-Instanz zulassen.
@@ -60,8 +63,9 @@ Klicken Sie auf *Compliance* > *CIFS-Scanstatus* > *CIFS-Anmeldeinformationen be
 
 
 
-==== Stellen Sie die Verbindung zwischen Cloud Manager und Cloud Compliance sicher
+==== image:number4.png["Nummer 4"] Stellen Sie die Verbindung zwischen Cloud Manager und Cloud Compliance sicher
 
+[role="quick-margin-list"]
 * Die Sicherheitsgruppe für Cloud Manager muss ein- und ausgehenden Traffic über Port 80 zu und von der Cloud Compliance-Instanz ermöglichen.
 * Wenn Ihr AWS-Netzwerk keine NAT oder Proxy für den Internet-Zugriff verwendet, muss die Sicherheitsgruppe für Cloud Manager eingehenden Datenverkehr über TCP-Port 3128 von der Cloud-Compliance-Instanz zulassen.
 
@@ -125,6 +129,7 @@ Hilfe finden Sie unter link:task_deploying_otc_aws.html["Starten von Cloud Volum
 
 
 
+.Ergebnis
 Cloud Compliance ist auf dem Cloud Volumes ONTAP System aktiviert. Wenn Sie Cloud-Compliance zum ersten Mal aktiviert haben, implementiert Cloud Manager die Instanz zur Cloud-Compliance bei Ihrem Cloud-Provider. Sobald die Instanz verfügbar ist, beginnt sie mit dem Scannen der Daten, während sie auf jedes von Ihnen erstellte Volume geschrieben werden.
 
 
@@ -156,6 +161,7 @@ image:screenshot_enable_compliance.gif["Ein Screenshot mit dem Symbol Compliance
 
 
 
+.Ergebnis
 Wenn Sie Cloud-Compliance zum ersten Mal aktiviert haben, implementiert Cloud Manager die Instanz zur Cloud-Compliance bei Ihrem Cloud-Provider.
 
 Cloud Compliance beginnt mit der Überprüfung der Daten in den einzelnen Arbeitsumgebungen. Sobald Cloud Compliance die ersten Scans abgeschlossen hat, stehen die Daten im Compliance-Dashboard zur Verfügung. Die Dauer, die von der Datenmenge abhängt, kann ein paar Minuten oder Stunden betragen.

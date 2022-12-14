@@ -21,8 +21,8 @@ NOTE: Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud 
 
 *Auswahl*
 
-*  permissions by providing AWS keys
-*  permissions by assuming IAM roles in other accounts
+* <<Erteilen von Berechtigungen durch die Bereitstellung von AWS Schlüsseln>>
+* <<Gewährung von Berechtigungen durch Annahme von IAM-Rollen in anderen Konten>>
 
 
 
@@ -45,7 +45,8 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AW
 
 
 
-Das Konto verfügt nun über die erforderlichen Berechtigungen.  AWS accounts to Cloud Manager,Sie können es jetzt zu Cloud Manager hinzufügen.
+.Ergebnis
+Das Konto verfügt nun über die erforderlichen Berechtigungen. <<Hinzufügen von AWS Konten zu Cloud Manager,Sie können es jetzt zu Cloud Manager hinzufügen>>.
 
 
 
@@ -89,7 +90,8 @@ image:screenshot_iam_create_role.gif["Ein Screenshot, der die Seite „Rolle ers
 
 
 
-Das Konto verfügt nun über die erforderlichen Berechtigungen.  AWS accounts to Cloud Manager,Sie können es jetzt zu Cloud Manager hinzufügen.
+.Ergebnis
+Das Konto verfügt nun über die erforderlichen Berechtigungen. <<Hinzufügen von AWS Konten zu Cloud Manager,Sie können es jetzt zu Cloud Manager hinzufügen>>.
 
 
 
@@ -107,6 +109,7 @@ image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol „Einstel
 . Bestätigen Sie, dass die Richtlinienanforderungen erfüllt wurden, und klicken Sie dann auf *Konto erstellen*.
 
 
+.Ergebnis
 Sie können jetzt auf der Seite Details und Anmeldeinformationen zu einem anderen Konto wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:
 
 image:screenshot_accounts_switch_aws.gif["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]

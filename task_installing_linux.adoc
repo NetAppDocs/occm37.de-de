@@ -108,6 +108,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Cl
 
 
 
+.Nachdem Sie fertig sind
 Einrichten von Berechtigungen, damit Cloud Manager Cloud Volumes ONTAP bei Ihrem Cloud-Provider implementieren kann:
 
 * AWS, link:task_adding_aws_accounts.html["AWS Konto einrichten und dann zu Cloud Manager hinzufügen"].

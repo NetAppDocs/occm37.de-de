@@ -85,8 +85,8 @@ Komprimierung:: Reduziert die physische Kapazität, die zum Speichern von Daten 
 
 Planen Sie die Implementierung von Cloud Volumes ONTAP in AWS, indem Sie die Größe Ihres Systems dimensionieren und die erforderlichen Netzwerkinformationen überprüfen.
 
-*  your system in AWS
-*  network information worksheet
+* <<Dimensionierung Ihres Systems in AWS>>
+* <<Arbeitsblatt mit Informationen zum AWS-Netzwerk>>
 
 
 
@@ -210,8 +210,8 @@ Wenn Sie Cloud Volumes ONTAP in AWS starten, müssen Sie Details zu Ihrem VPC-Ne
 
 Planen Sie die Implementierung von Cloud Volumes ONTAP in Azure, indem Sie die Größe Ihres Systems dimensionieren und die erforderlichen Netzwerkinformationen überprüfen.
 
-*  your system in Azure
-*  network information worksheet
+* <<Dimensionierung Ihres Systems in Azure>>
+* <<Azure Network Information Worksheet>>
 
 
 
@@ -291,8 +291,8 @@ Wenn Sie Cloud Volumes ONTAP in Azure implementieren, müssen Sie Details zu Ihr
 
 Planen Sie die Implementierung von Cloud Volumes ONTAP in der Google Cloud Platform, indem Sie die Größe Ihres Systems dimensionieren und die erforderlichen Netzwerkinformationen überprüfen.
 
-*  your system in GCP
-*  network information worksheet
+* <<Dimensionierung Ihres Systems in GCP>>
+* <<Informationarbeitsblatt für das GCP-Netzwerk>>
 
 
 

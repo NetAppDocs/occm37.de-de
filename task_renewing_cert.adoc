@@ -24,4 +24,5 @@ Details zum Cloud Manager-Zertifikat werden angezeigt, einschließlich des Ablau
 . Klicken Sie auf *HTTPS-Zertifikat erneuern* und befolgen Sie die Schritte, um eine CSR zu erstellen oder Ihr eigenes CA-signiertes Zertifikat zu installieren.
 
 
+.Ergebnis
 Cloud Manager verwendet das neue CA-signierte Zertifikat, um sicheren HTTPS-Zugriff zu ermöglichen.

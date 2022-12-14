@@ -45,4 +45,5 @@ Um ein bestehendes Cloud Volumes ONTAP System zu implementieren, das in diesem n
 
 
 
+.Ergebnis
 Ihre Cloud Manager Konfiguration ist jetzt mit Ihren Accounts, Einstellungen und Arbeitsumgebungen wiederhergestellt.

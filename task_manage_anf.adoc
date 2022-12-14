@@ -91,7 +91,7 @@ image:screenshot_anf_location.gif["Ein Screenshot der Seite „Location  Export 
 
 
 
-== Immer ein Volume Mount-Pfad
+== Abrufen des Bereitstellungspfads eines Volumes
 
 Kopieren Sie den Mount-Pfad für ein Volume, damit Sie das Volume auf einem Linux-Rechner mounten können.
 

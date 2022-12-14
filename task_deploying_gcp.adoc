@@ -173,6 +173,7 @@ Mithilfe der Schlüssel kann Cloud Manager einen Cloud Storage-Bucket für das D
 
 
 
+.Ergebnis
 Cloud Manager implementiert das Cloud Volumes ONTAP System. Sie können den Fortschritt in der Timeline verfolgen.
 
 Wenn Sie Probleme bei der Implementierung des Cloud Volumes ONTAP Systems haben, lesen Sie die Fehlermeldung. Sie können auch die Arbeitsumgebung auswählen und auf *Umgebung neu erstellen* klicken.

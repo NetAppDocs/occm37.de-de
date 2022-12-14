@@ -20,27 +20,29 @@ Zum Einrichten von Data Tiering müssen Sie lediglich Folgendes tun:
 
 
 
-==== Wählen Sie eine unterstützte Konfiguration aus
+==== image:number1.png["Nummer 1"] Wählen Sie eine unterstützte Konfiguration aus
 
 [role="quick-margin-para"]
 Die meisten Konfigurationen werden unterstützt. Wenn Sie über ein Cloud Volumes ONTAP Standard-, Premium- oder BYOL-System mit der aktuellsten Version verfügen, sollten Sie sich dafür entscheiden. link:task_tiering.html#configurations-that-support-data-tiering["Weitere Informationen ."].
 
 
 
-==== Stellen Sie die Konnektivität zwischen Cloud Volumes ONTAP und Objekt-Storage sicher
+==== image:number2.png["Nummer 2"] Stellen Sie die Konnektivität zwischen Cloud Volumes ONTAP und Objekt-Storage sicher
 
-* Für AWS ist ein VPC Endpunkt zu S3 erforderlich.  for tiering data in AWS,Weitere Informationen ..
-* Bei Azure sind keine Vorgänge mehr notwendig, solange Cloud Manager über die erforderlichen Berechtigungen verfügt.  for tiering data in Microsoft Azure,Weitere Informationen ..
-* Für GCP müssen Sie einem GCP-Konto zum Cloud Manager hinzufügen und das Subnetz für privaten Google Access konfigurieren.  for tiering data in Google Cloud Platform,Weitere Informationen ..
+[role="quick-margin-list"]
+* Für AWS ist ein VPC Endpunkt zu S3 erforderlich. <<Requirements for tiering data in AWS,Weitere Informationen .>>.
+* Bei Azure sind keine Vorgänge mehr notwendig, solange Cloud Manager über die erforderlichen Berechtigungen verfügt. <<Requirements for tiering data in Microsoft Azure,Weitere Informationen .>>.
+* Für GCP müssen Sie einem GCP-Konto zum Cloud Manager hinzufügen und das Subnetz für privaten Google Access konfigurieren. <<Requirements for tiering data in Google Cloud Platform,Weitere Informationen .>>.
 
 
 
 
-==== Wählen Sie eine Tiering-Richtlinie beim Erstellen, Ändern oder Replizieren eines Volume
+==== image:number3.png["Nummer 3"] Wählen Sie eine Tiering-Richtlinie beim Erstellen, Ändern oder Replizieren eines Volume
 
 [role="quick-margin-para"]
 Cloud Manager fordert Sie auf, beim Erstellen, Ändern oder Replizieren eines Volume eine Tiering-Richtlinie auszuwählen.
 
+[role="quick-margin-list"]
 * link:task_tiering.html#tiering-data-from-read-write-volumes["Tiering von Daten auf Lese-/Schreib-Volumes"]
 * link:task_tiering.html#tiering-data-from-data-protection-volumes["Tiering von Daten auf Data-Protection-Volumes"]
 
@@ -176,6 +178,7 @@ Wenn Sie das Daten-Tiering aktivieren, schichtet Cloud Volumes ONTAP inaktive Da
 
 NOTE: Sie können die Tiering-Stufe in GCP nicht ändern, da derzeit nur die _Regional_ Storage-Klasse unterstützt wird.
 
+.Über diese Aufgabe
 Die Tiering Level sind systemweit - sie sind nicht pro Volume.
 
 In AWS können Sie die Tiering-Ebene ändern, sodass inaktive Daten nach 30 Tagen Inaktivität in eine der folgenden Storage-Klassen verschoben werden:

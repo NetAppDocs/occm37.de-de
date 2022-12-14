@@ -16,7 +16,7 @@ Mit Cloud Manager können Sie NetApp Cloud Volumes ONTAP implementieren und mana
 
 
 
-== Entdecken Sie, was neu ist
+== Entdecken Sie die Neuigkeiten
 
 * link:reference_new_occm.html["Neuerungen in Cloud Manager"]
 * https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_97.html["Neuerungen in Cloud Volumes ONTAP"^]

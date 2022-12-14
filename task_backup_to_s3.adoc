@@ -30,11 +30,12 @@ Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den ve
 
 
 
-==== Überprüfen Sie die Unterstützung Ihrer Konfiguration
+==== image:number1.png["Nummer 1"] Überprüfen Sie die Unterstützung Ihrer Konfiguration
 
 [role="quick-margin-para"]
 Überprüfen Sie Folgendes:
 
+[role="quick-margin-list"]
 * Cloud Volumes ONTAP 9.4 oder höher läuft in einer unterstützten AWS-Region: N. Virginia, Oregon, Irland, Frankfurt oder Sydney
 * Sie haben sich für das neue angemeldet https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Cloud Manager Marketplace-Angebot"^]
 * TCP-Port 5010 ist für ausgehenden Datenverkehr auf der Sicherheitsgruppe für Cloud Volumes ONTAP geöffnet (er ist standardmäßig geöffnet)
@@ -57,8 +58,9 @@ Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den ve
 
 
 
-==== Aktivieren Sie Backup auf Ihrem neuen oder vorhandenen System in S3
+==== image:number2.png["Nummer 2"] Aktivieren Sie Backup auf Ihrem neuen oder vorhandenen System in S3
 
+[role="quick-margin-list"]
 * Neue Systeme: Die Funktion Backup to S3 ist standardmäßig im Assistenten für die Arbeitsumgebung aktiviert. Achten Sie darauf, dass die Option aktiviert bleibt.
 * Bestehende Systeme: Öffnen Sie die Arbeitsumgebung, klicken Sie auf das Symbol für die Backup-Einstellungen und aktivieren Sie Backups.
 +
@@ -68,7 +70,7 @@ image:screenshot_backup_to_s3_icon.gif["Ein Screenshot, der das Symbol Backup to
 
 
 
-==== Ändern Sie bei Bedarf die Backup-Richtlinie
+==== image:number3.png["Nummer 3"] Ändern Sie bei Bedarf die Backup-Richtlinie
 
 [role="quick-margin-para"]
 Die Standardrichtlinie sichert Volumes täglich und speichert 30 Backup-Kopien jedes Volumes. Bei Bedarf können Sie die Anzahl der zu behaltenden Backup-Kopien ändern.
@@ -78,7 +80,7 @@ image:screenshot_backup_to_s3_settings.gif["Ein Screenshot, der die Einstellunge
 
 
 
-==== Stellen Sie Ihre Daten nach Bedarf wieder her
+==== image:number4.png["Nummer 4"] Stellen Sie Ihre Daten nach Bedarf wieder her
 
 [role="quick-margin-para"]
 Klicken Sie oben im Cloud Manager auf *Backup & Restore*, wählen Sie ein Volume aus, wählen Sie ein Backup aus und stellen Sie dann Daten aus dem Backup auf ein neues Volume wieder her.
@@ -160,13 +162,14 @@ image:screenshot_backup_to_s3.gif["Zeigt die Option „Backup in S3“ im Assist
 . Führen Sie die Seiten im Assistenten aus, um das System bereitzustellen.
 
 
-Die Funktion Backup auf S3 ist auf dem System aktiviert und sichert Volumes täglich und speichert 30 Backup-Kopien.  the backup retention,Erfahren Sie, wie Sie die Backup-Aufbewahrung ändern können.
+.Ergebnis
+Die Funktion Backup auf S3 ist auf dem System aktiviert und sichert Volumes täglich und speichert 30 Backup-Kopien. <<Ändern der Backup-Aufbewahrung,Erfahren Sie, wie Sie die Backup-Aufbewahrung ändern können>>.
 
 
 
 == Aktivieren von Backups in S3 auf einem vorhandenen System
 
-Sie können Backups in S3 auf einem vorhandenen Cloud Volumes ONTAP System aktivieren, solange Sie eine unterstützte Konfiguration ausführen. Weitere Informationen finden Sie unter .
+Sie können Backups in S3 auf einem vorhandenen Cloud Volumes ONTAP System aktivieren, solange Sie eine unterstützte Konfiguration ausführen. Weitere Informationen finden Sie unter <<Anforderungen>>.
 
 .Schritte
 . Öffnen Sie die Arbeitsumgebung.
@@ -181,6 +184,7 @@ image:screenshot_backup_to_s3_settings.gif["Ein Screenshot, der die Einstellunge
 
 
 
+.Ergebnis
 Die Funktion Backup in S3 beginnt mit den ersten Backups jedes Volumes.
 
 

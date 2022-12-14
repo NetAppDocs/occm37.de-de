@@ -19,8 +19,9 @@ Starten Sie mit Cloud Volumes ONTAP, indem Sie AWS einrichten und dann die Cloud
 
 
 
-=== Richten Sie Ihr Netzwerk ein
+=== image:number1.png["Nummer 1"] Richten Sie Ihr Netzwerk ein
 
+[role="quick-margin-list"]
 . Aktivieren Sie ausgehenden Internetzugriff vom Ziel-VPC aus, sodass Cloud Manager und Cloud Volumes ONTAP mit mehreren Endpunkten in Verbindung treten können.
 +
 Dieser Schritt ist wichtig, da Cloud Manager Cloud Volumes ONTAP nicht ohne Outbound-Internetzugang implementieren kann. Wenn Sie die ausgehende Verbindung begrenzen müssen, lesen Sie die Liste der Endpunkte für link:reference_networking_cloud_manager.html#outbound-internet-access["Cloud Manager"] Und link:reference_networking_aws.html#general-aws-networking-requirements-for-cloud-volumes-ontap["Cloud Volumes ONTAP"].
@@ -33,18 +34,19 @@ Ein VPC-Endpunkt ist erforderlich, wenn Sie kalte Daten von Cloud Volumes ONTAP 
 
 
 
-=== Stellen Sie die erforderlichen AWS-Berechtigungen bereit
+=== image:number2.png["Nummer 2"] Stellen Sie die erforderlichen AWS-Berechtigungen bereit
 
 [role="quick-margin-para"]
 Wenn Sie Cloud Manager über NetApp Cloud Central implementieren, müssen Sie ein AWS-Konto verwenden, das über die Berechtigung zum Bereitstellen der Instanz verfügt.
 
+[role="quick-margin-list"]
 . Gehen Sie zur AWS IAM-Konsole und erstellen Sie eine Richtlinie durch Kopieren und Einfügen der Inhalte des https://mysupport.netapp.com/cloudontap/iampolicies["NetApp Cloud Central-Richtlinie für AWS"^].
 . Hängen Sie die Richtlinie an den IAM-Benutzer an.
 
 
 
 
-=== Abonnieren Sie ihn im AWS Marketplace
+=== image:number3.png["Nummer 3"] Abonnieren Sie ihn im AWS Marketplace
 
 [role="quick-margin-para"]
 https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Abonnieren Sie Cloud Manager über den AWS Marketplace"^] Um sicherzustellen, dass es nach der kostenlosen Testversion von Cloud Volumes ONTAP keine Serviceunterbrechung gibt. Sie erhalten für jedes von Ihnen erstellte Cloud Volumes ONTAP-PAYGO-System und jede von Ihnen erstellte Add-on-Funktion die Gebühr.
@@ -54,14 +56,14 @@ Wenn Sie Cloud Volumes ONTAP mit Ihrer eigenen Lizenz (BYOL) starten, https://aw
 
 
 
-=== Starten Sie Cloud Manager über NetApp Cloud Central
+=== image:number4.png["Nummer 4"] Starten Sie Cloud Manager über NetApp Cloud Central
 
 [role="quick-margin-para"]
 Cloud Manager Software ist für die Implementierung und das Management von Cloud Volumes ONTAP erforderlich. Es dauert nur ein paar Minuten, um eine Cloud Manager Instanz von zu starten https://cloud.netapp.com["Cloud Central"^].
 
 
 
-=== Starten Sie Cloud Volumes ONTAP mit Cloud Manager
+=== image:number5.png["Nummer 5"] Starten Sie Cloud Volumes ONTAP mit Cloud Manager
 
 [role="quick-margin-para"]
 Wenn Cloud Manager fertig ist, klicken Sie einfach auf Erstellen, wählen Sie den Systemtyp aus, den Sie starten möchten, und führen Sie die Schritte im Assistenten aus. Nach 25 Minuten sollte Ihr erstes Cloud Volumes ONTAP System betriebsbereit sein.

@@ -25,16 +25,17 @@ NOTE: Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud 
 
 Cloud Manager benötigt Berechtigungen zum Ausführen von Aktionen in Azure. Sie können einem Azure-Konto die erforderlichen Berechtigungen erteilen, indem Sie einen Service-Principal in Azure Active Directory erstellen und einrichten, sowie die für Cloud Manager erforderlichen Azure Zugangsdaten erhalten.
 
+.Über diese Aufgabe
 In der folgenden Abbildung wird dargestellt, wie Cloud Manager Berechtigungen zum Ausführen von Vorgängen in Azure erhält. Ein Service-Prinzipalobjekt, das an ein oder mehrere Azure Subscriptions gebunden ist, stellt Cloud Manager in Azure Active Directory dar und wird einer benutzerdefinierten Rolle zugewiesen, die die erforderlichen Berechtigungen zulässt.
 
 image:diagram_azure_authentication.png["Konzeptionelles Bild, das zeigt, wie Cloud Manager Authentifizierung und Autorisierung von Azure Active Directory erhält, bevor er einen API-Aufruf durchführen kann. In Active Directory definiert die Rolle \"Cloud Manager Operator\" Berechtigungen. Sie ist an ein oder mehrere Azure Subscriptions und ein Service-Prinzipalobjekt gebunden, das die Cloud Manager Applikation repräsentiert."]
 
 .Schritte
-.  an Azure Active Directory application,Erstellen Sie eine Azure Active Directory-Anwendung.
-.  the application to a role,Anwendung einer Rolle zuweisen.
-.  Windows Azure Service Management API permissions,Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu.
-.  the application ID and directory ID,Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab.
-.  a client secret,Erstellen Sie einen Clientschlüssel.
+. <<Erstellen einer Azure Active Directory-Anwendung,Erstellen Sie eine Azure Active Directory-Anwendung>>.
+. <<Anwendung einer Rolle zuweisen,Anwendung einer Rolle zuweisen>>.
+. <<Windows Azure Service Management-API-Berechtigungen werden hinzugefügt,Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu>>.
+. <<Abrufen der Anwendungs-ID und der Verzeichnis-ID,Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab>>.
+. <<Erstellen eines Clientgeheimnisses,Erstellen Sie einen Clientschlüssel>>.
 
 
 
@@ -43,6 +44,7 @@ image:diagram_azure_authentication.png["Konzeptionelles Bild, das zeigt, wie Clo
 
 Erstellen einer Azure Active Directory (AD)-Applikation und eines Service-Principal, den Cloud Manager für die rollenbasierte Zugriffssteuerung nutzen kann
 
+.Bevor Sie beginnen
 Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"^].
 
 .Schritte
@@ -62,6 +64,7 @@ image:screenshot_azure_ad.gif["Zeigt den Active Directory-Dienst in Microsoft Az
 . Klicken Sie Auf *Registrieren*.
 
 
+.Ergebnis
 Sie haben die AD-Anwendung und den Service-Principal erstellt.
 
 
@@ -177,6 +180,7 @@ image:screenshot_azure_client_secret.gif["Ein Screenshot des Azure-Portals, in d
 
 
 
+.Ergebnis
 Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in Cloud Manager eingeben, wenn Sie ein Azure-Konto hinzufügen.
 
 
@@ -193,14 +197,15 @@ image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol „Einstel
 . Klicken Sie auf *Neues Konto hinzufügen* und wählen Sie *Microsoft Azure*.
 . Geben Sie Informationen zum Azure Active Directory Service Principal ein, der die erforderlichen Berechtigungen erteilt:
 +
-** Anwendungs-ID: Siehe  the application ID and directory ID.
-** Mandanten-ID (oder Verzeichnis-ID): Siehe  the application ID and directory ID.
-** Anwendungsschlüssel (das Clientgeheimnis): Siehe  a client secret.
+** Anwendungs-ID: Siehe <<Abrufen der Anwendungs-ID und der Verzeichnis-ID>>.
+** Mandanten-ID (oder Verzeichnis-ID): Siehe <<Abrufen der Anwendungs-ID und der Verzeichnis-ID>>.
+** Anwendungsschlüssel (das Clientgeheimnis): Siehe <<Erstellen eines Clientgeheimnisses>>.
 
 
 . Bestätigen Sie, dass die Richtlinienanforderungen erfüllt wurden, und klicken Sie dann auf *Konto erstellen*.
 
 
+.Ergebnis
 Sie können jetzt auf der Seite Details und Anmeldeinformationen zu einem anderen Konto wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:
 
 image:screenshot_accounts_switch_azure.gif["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]
@@ -211,6 +216,7 @@ image:screenshot_accounts_switch_azure.gif["Ein Screenshot, in dem die Auswahl z
 
 Mit Cloud Manager können Sie das Azure Konto und das Abonnement auswählen, in dem Sie Cloud Volumes ONTAP implementieren möchten. Sie können kein anderes Azure-Abonnement für das verwaltete Identitätsprofil auswählen, es sei denn, Sie verknüpfen das https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Verwaltete Identität"^] Mit diesen Abonnements.
 
+.Über diese Aufgabe
 Eine verwaltete Identität ist link:concept_accounts_azure.html["Zunächst das Azure-Konto"] Wenn Sie Cloud Manager über NetApp Cloud Central implementieren. Bei der Implementierung von Cloud Manager erstellte Cloud Central die Rolle "OnCommand Cloud Manager Operator" und wies sie der virtuellen Cloud Manager-Maschine zu.
 
 .Schritte
@@ -236,6 +242,7 @@ NOTE: OnCommand Cloud Manager Operator ist der im angegebene Standardname https:
 . Wiederholen Sie diese Schritte für weitere Abonnements.
 
 
+.Ergebnis
 Wenn Sie eine neue Arbeitsumgebung erstellen, sollten Sie nun über mehrere Azure-Abonnements für das verwaltete Identitätsprofil verfügen.
 
 image:screenshot_accounts_switch_azure_subscription.gif["Ein Screenshot, in dem die Möglichkeit angezeigt wird, bei der Auswahl eines Microsoft Azure Provider-Kontos mehrere Azure-Abonnements auszuwählen."]

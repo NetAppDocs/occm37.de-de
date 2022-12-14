@@ -22,6 +22,7 @@ Sie können Cloud Manager auf die neueste Version oder mit einem Patch aktualisi
 
 Cloud Manager kann sich automatisch aktualisieren, wenn eine neue Version verfügbar ist. Dadurch wird sichergestellt, dass die neueste Version ausgeführt wird.
 
+.Über diese Aufgabe
 Cloud Manager wird automatisch um 24:00 Uhr aktualisiert, wenn keine Vorgänge ausgeführt werden.
 
 .Schritte
@@ -35,8 +36,10 @@ Cloud Manager wird automatisch um 24:00 Uhr aktualisiert, wenn keine Vorgänge a
 
 Sie sollten die automatischen Updates für Cloud Manager aktivieren, aber Sie können jederzeit eine manuelle Aktualisierung direkt über die Webkonsole durchführen. Cloud Manager bezieht das Software-Update von einem NetApp S3-Bucket in AWS.
 
+.Bevor Sie beginnen
 Sie sollten die Prüfung durchgeführt haben link:reference_new_occm.html["Neuerungen in dieser Version"] Um neue Anforderungen und Änderungen im Support zu ermitteln.
 
+.Über diese Aufgabe
 Das Softwareupdate dauert einige Minuten. Cloud Manager ist während des Updates nicht verfügbar.
 
 .Schritte
@@ -53,6 +56,7 @@ Wenn Aufgaben ausgeführt werden, warten Sie, bis sie abgeschlossen sind, bevor 
 . Füllen Sie das Bestätigungsdialogfeld aus und klicken Sie dann auf *OK*.
 
 
+.Ergebnis
 Cloud Manager startet den Update-Prozess. Sie können sich nach einigen Minuten bei der Konsole anmelden.
 
 
@@ -61,6 +65,7 @@ Cloud Manager startet den Update-Prozess. Sie können sich nach einigen Minuten 
 
 Wenn NetApp einen Patch gemeinsam mit Ihnen verwendet, können Sie Cloud Manager direkt über die Cloud Manager Webkonsole mit dem bereitgestellten Patch aktualisieren.
 
+.Über diese Aufgabe
 Das Patch-Update dauert in der Regel einige Minuten. Cloud Manager ist während des Updates nicht verfügbar.
 
 .Schritte
@@ -76,4 +81,5 @@ image:screenshot_patch.gif["Screenshot: Zeigt den Link zur Aktualisierung von Cl
 . Wählen Sie den bereitgestellten Patch aus.
 
 
+.Ergebnis
 Cloud Manager wendet den Patch an. Sie können sich nach einigen Minuten bei der Konsole anmelden.

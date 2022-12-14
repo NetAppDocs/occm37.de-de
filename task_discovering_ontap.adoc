@@ -21,6 +21,7 @@ Cloud Manager kann die ONTAP Cluster in Ihrer lokalen Umgebung, in einer NetApp 
 
 Mit der Erkennung eines ONTAP Clusters in Cloud Manager können Sie Storage bereitstellen und Daten in Ihrer Hybrid Cloud replizieren.
 
+.Bevor Sie beginnen
 Sie müssen über die Clusterverwaltungs-IP-Adresse und das Kennwort für das Administratorbenutzerkonto verfügen, um den Cluster zum Cloud Manager hinzuzufügen.
 
 Cloud Manager erkennt ONTAP Cluster mithilfe von HTTPS. Wenn Sie benutzerdefinierte Firewall-Richtlinien verwenden, müssen diese die folgenden Anforderungen erfüllen:
@@ -44,6 +45,7 @@ image:screenshot_discover_ontap.gif["Ein Screenshot, der ein Beispiel für die S
 . Geben Sie auf der Seite Details einen Namen und eine Beschreibung für die Arbeitsumgebung ein und klicken Sie dann auf *Go*.
 
 
+.Ergebnis
 Cloud Manager erkennt das Cluster. Sie können jetzt Volumes erstellen, Daten auf und vom Cluster replizieren und OnCommand System Manager starten, um erweiterte Aufgaben auszuführen.
 
 
@@ -52,8 +54,10 @@ Cloud Manager erkennt das Cluster. Sie können jetzt Volumes erstellen, Daten au
 
 Mit Cloud Manager können Sie NFS- und CIFS-Volumes auf ONTAP Clustern bereitstellen.
 
+.Bevor Sie beginnen
 NFS oder CIFS müssen auf dem Cluster eingerichtet sein. Sie können NFS und CIFS mit System Manager oder der CLI einrichten.
 
+.Über diese Aufgabe
 Sie können Volumes auf vorhandenen Aggregaten erstellen. Sie können keine neuen Aggregate aus Cloud Manager erstellen.
 
 .Schritte

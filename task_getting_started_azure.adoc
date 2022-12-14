@@ -19,7 +19,7 @@ Steigen Sie in das Cloud Volumes ONTAP ein, indem Sie Azure einrichten und dann 
 
 
 
-=== Richten Sie Ihr Netzwerk ein
+=== image:number1.png["Nummer 1"] Richten Sie Ihr Netzwerk ein
 
 [role="quick-margin-para"]
 Aktivieren Sie ausgehenden Internetzugriff vom Ziel-VNet aus, sodass Cloud Manager und Cloud Volumes ONTAP mit mehreren Endpunkten in Verbindung treten können.
@@ -29,11 +29,12 @@ Dieser Schritt ist wichtig, da Cloud Manager Cloud Volumes ONTAP nicht ohne ausg
 
 
 
-=== Stellen Sie die erforderlichen Azure Berechtigungen bereit
+=== image:number2.png["Nummer 2"] Stellen Sie die erforderlichen Azure Berechtigungen bereit
 
 [role="quick-margin-para"]
 Wenn Sie Cloud Manager über NetApp Cloud Central implementieren, müssen Sie ein Azure Konto verwenden, das über Berechtigungen zum Bereitstellen der Virtual Machine von Cloud Manager verfügt.
 
+[role="quick-margin-list"]
 . Laden Sie die herunter https://mysupport.netapp.com/cloudontap/iampolicies["NetApp Cloud Central-Richtlinie für Azure"^].
 . Ändern Sie die JSON-Datei, indem Sie im Feld "AssignableScopes" Ihre Azure Abonnement-ID hinzufügen.
 . Verwenden Sie die JSON-Datei, um in Azure namens _Azure SetupAsService_ eine benutzerdefinierte Rolle zu erstellen.
@@ -45,14 +46,14 @@ Beispiel: *Az Rollendefinition erstellen --Role-Definition C:\Policy_for_Setup_a
 
 
 
-=== Starten Sie Cloud Manager über NetApp Cloud Central
+=== image:number3.png["Nummer 3"] Starten Sie Cloud Manager über NetApp Cloud Central
 
 [role="quick-margin-para"]
 Cloud Manager Software ist für die Implementierung und das Management von Cloud Volumes ONTAP erforderlich. Es dauert nur ein paar Minuten, um eine Cloud Manager Instanz von zu starten https://cloud.netapp.com["Cloud Central"^].
 
 
 
-=== Starten Sie Cloud Volumes ONTAP mit Cloud Manager
+=== image:number4.png["Nummer 4"] Starten Sie Cloud Volumes ONTAP mit Cloud Manager
 
 [role="quick-margin-para"]
 Sobald Cloud Manager bereit ist, klicken Sie einfach auf Erstellen, wählen Sie den Systemtyp aus, den Sie bereitstellen möchten, und führen Sie die Schritte im Assistenten aus. Nach 25 Minuten sollte Ihr erstes Cloud Volumes ONTAP System betriebsbereit sein.

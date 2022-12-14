@@ -54,6 +54,7 @@ image:screenshot_cvs_aws_details.gif["Ein Screenshot der Seite Cloud Volumes Ser
 
 
 
+.Ergebnis
 Cloud Manager sollte jetzt Ihre Cloud Volumes Service für AWS Konfiguration auf der Seite Arbeitsumgebungen anzeigen.
 
 image:screenshot_cvs_aws_cloud.gif["Einen Screenshot von Cloud Volumes Service für AWS auf der Seite „Arbeitsumgebungen“."]
@@ -79,6 +80,7 @@ image:screenshot_cvs_discover_region.gif["Ein Screenshot mit der Option „Cloud
 
 
 
+.Ergebnis
 Cloud Manager ermittelt Informationen zu Cloud Volumes in der ausgewählten Region.
 
 

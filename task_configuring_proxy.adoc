@@ -16,6 +16,7 @@ summary: Wenn Sie Cloud Manager zum ersten Mal implementieren, werden Sie aufgef
 [role="lead"]
 Wenn Sie Cloud Manager zum ersten Mal implementieren, werden Sie aufgefordert, einen Proxyserver einzugeben, wenn das System nicht über einen Internetzugang verfügt. Sie können den Proxy auch manuell unter den Einstellungen von Cloud Manager eingeben und ändern.
 
+.Über diese Aufgabe
 Wenn Ihre Unternehmensrichtlinien vorschreiben, dass Sie einen Proxyserver für die gesamte HTTP-Kommunikation mit dem Internet verwenden, müssen Sie Cloud Manager so konfigurieren, dass dieser Proxyserver verwendet wird. Der Proxyserver kann sich in der Cloud oder im Netzwerk befinden.
 
 Wenn Sie Cloud Manager für die Verwendung eines Proxy-Servers konfigurieren, verwenden Cloud Manager, Cloud Volumes ONTAP und der HA-Vermittler den Proxy-Server.
@@ -32,4 +33,5 @@ NOTE: Cloud Manager unterstützt keine Kennwörter, die das Zeichen @ enthalten.
 
 
 
+.Ergebnis
 Nachdem Sie den Proxyserver angegeben haben, werden neue Cloud Volumes ONTAP Systeme automatisch so konfiguriert, dass sie den Proxyserver beim Senden von AutoSupport Nachrichten verwenden. Wenn Sie den Proxyserver nicht angeben, bevor Benutzer Cloud Volumes ONTAP Systeme erstellen, müssen sie den Proxyserver mithilfe von System Manager manuell in den AutoSupport-Optionen für jedes System festlegen.

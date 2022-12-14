@@ -27,8 +27,8 @@ link:https://docs.netapp.com/us-en/occm34/reference_new_occm.html["Neuerungen in
 
 Dieses Update enthält die folgenden Verbesserungen:
 
-*  Volumes ONTAP 9.7
-*  Compliance for Cloud Volumes ONTAP
+* <<Cloud Volumes ONTAP 9.7>>
+* <<Cloud Compliance für Cloud Volumes ONTAP>>
 
 
 
@@ -55,11 +55,11 @@ link:concept_cloud_compliance.html["Erfahren Sie mehr über Cloud Compliance"].
 
 Cloud Manager 3.7.5 umfasst die folgenden Verbesserungen:
 
-*  write speed for Cloud Volumes ONTAP in GCP
-*  ONTAP clusters as persistent storage for Kubernetes
-*  Trident version for Kubernetes
-*  for Azure general-purpose v2 storage accounts
-*  in Azure storage account names using APIs
+* <<Hohe Schreibgeschwindigkeit für Cloud Volumes ONTAP in GCP>>
+* <<On-Premises-ONTAP-Cluster als persistenter Storage für Kubernetes>>
+* <<Aktuelle Trident Version für Kubernetes>>
+* <<Support für allgemeine Azure v2 Storage-Konten>>
+* <<Präfixe in Azure-Storage-Kontonamen unter Verwendung von APIs>>
 
 
 
@@ -110,12 +110,12 @@ link:api.html["Weitere Details zur Verwendung von APIs finden Sie im API-Entwick
 
 Cloud Manager 3.7.4 umfasst die folgenden Verbesserungen:
 
-*  for Azure NetApp Files
-*  Volumes ONTAP for GCP enhancements
-*  to S3 enhancement
-*  of boot and root disks in AWS
-*  for the AWS Bahrain region
-*  for the Azure UAE North region
+* <<Unterstützung von Azure NetApp Files>>
+* <<Cloud Volumes ONTAP für GCP-Verbesserungen>>
+* <<Backup in S3-Verbesserungen>>
+* <<Verschlüsselung von Boot- und Root-Festplatten in AWS>>
+* <<Unterstützung für die Region AWS Bahrain>>
+* <<Unterstützung für die Azure VAE Nord Region>>
 
 
 
@@ -239,9 +239,9 @@ Für diese Funktion ist eine Aktualisierung des erforderlich https://mysupport.n
 
 Cloud Manager 3.7.3 umfasst die folgenden Verbesserungen:
 
-*  and management of Cloud Volumes Service for AWS
-*  subscription required in the AWS Marketplace
-*  for AWS GovCloud (US-East)
+* <<Bestandsaufnahme und Management von Cloud Volumes Service für AWS>>
+* <<Im AWS Marketplace ist ein neues Abonnement erforderlich>>
+* <<Unterstützung von AWS GovCloud (US-Ost)>>
 
 
 
@@ -282,11 +282,11 @@ Cloud Volumes ONTAP ist ab sofort in der Google Cloud Platform (GCP) verfügbar,
 
 == Cloud Manager 3.7.2 (5. August 2019)
 
-*  licenses
-*  storage classes for iSCSI
-*  of inodes
-*  for the Hong Kong region in AWS
-*  for the Australia Central regions in Azure
+* <<FlexCache-Lizenzen>>
+* <<Kubernetes Storage-Klassen für iSCSI>>
+* <<Verwaltung von Inoden>>
+* <<Unterstützung für die Region Hongkong in AWS>>
+* <<Unterstützung der australischen Zentralregionen in Azure>>
 
 
 
@@ -370,9 +370,9 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_96.html["Die neu
 
 == Cloud Manager 3.7 (5. Juni 2019)
 
-*  for upcoming Cloud Volumes ONTAP 9.6 release
-*  Cloud Central accounts
-*  and restore with the Cloud Backup Service
+* <<Unterstützung für die kommende Version Cloud Volumes ONTAP 9.6>>
+* <<NetApp Cloud Central Kunden>>
+* <<Backup und Restore mit der Cloud Backup Service>>
 
 
 
