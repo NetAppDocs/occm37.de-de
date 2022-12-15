@@ -1993,7 +1993,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-17 07:53:12 +0000">11/17/2022</time>
+    <time datetime="2022-12-14 18:16:12 +0000">12/14/2022</time>
     
   
 
@@ -2029,6 +2029,7 @@ Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud Manage
 <p>Cloud Manager benötigt Berechtigungen zum Ausführen von Aktionen in Azure. Sie können einem Azure-Konto die erforderlichen Berechtigungen erteilen, indem Sie einen Service-Principal in Azure Active Directory erstellen und einrichten, sowie die für Cloud Manager erforderlichen Azure Zugangsdaten erhalten.</p>
 </div>
 <div class="paragraph">
+<div class="title">Über diese Aufgabe</div>
 <p>In der folgenden Abbildung wird dargestellt, wie Cloud Manager Berechtigungen zum Ausführen von Vorgängen in Azure erhält. Ein Service-Prinzipalobjekt, das an ein oder mehrere Azure Subscriptions gebunden ist, stellt Cloud Manager in Azure Active Directory dar und wird einer benutzerdefinierten Rolle zugewiesen, die die erforderlichen Berechtigungen zulässt.</p>
 </div>
 <div class="paragraph">
@@ -2038,19 +2039,19 @@ Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud Manage
 <div class="title">Schritte</div>
 <ol class="arabic">
 <li>
-<p>an Azure Active Directory application,Erstellen Sie eine Azure Active Directory-Anwendung.</p>
+<p><a href="#erstellen-einer-azure-active-directory-anwendung">Erstellen Sie eine Azure Active Directory-Anwendung</a>.</p>
 </li>
 <li>
-<p>the application to a role,Anwendung einer Rolle zuweisen.</p>
+<p><a href="#anwendung-einer-rolle-zuweisen">Anwendung einer Rolle zuweisen</a>.</p>
 </li>
 <li>
-<p>Windows Azure Service Management API permissions,Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu.</p>
+<p><a href="#windows-azure-service-management-api-berechtigungen-werden-hinzugefügt">Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu</a>.</p>
 </li>
 <li>
-<p>the application ID and directory ID,Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab.</p>
+<p><a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab</a>.</p>
 </li>
 <li>
-<p>a client secret,Erstellen Sie einen Clientschlüssel.</p>
+<p><a href="#erstellen-eines-clientgeheimnisses">Erstellen Sie einen Clientschlüssel</a>.</p>
 </li>
 </ol>
 </div>
@@ -2060,6 +2061,7 @@ Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud Manage
 <p>Erstellen einer Azure Active Directory (AD)-Applikation und eines Service-Principal, den Cloud Manager für die rollenbasierte Zugriffssteuerung nutzen kann</p>
 </div>
 <div class="paragraph">
+<div class="title">Bevor Sie beginnen</div>
 <p>Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/" target="_blank" rel="noopener">"Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"</a>.</p>
 </div>
 <div class="olist arabic">
@@ -2099,6 +2101,7 @@ Bei der Implementierung von Cloud Manager über Cloud Central fügt Cloud Manage
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Sie haben die AD-Anwendung und den Service-Principal erstellt.</p>
 </div>
 </div>
@@ -2282,6 +2285,7 @@ Wenn Sie das Konto zu Cloud Manager hinzufügen, bezieht sich Cloud Manager auf 
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in Cloud Manager eingeben, wenn Sie ein Azure-Konto hinzufügen.</p>
 </div>
 </div>
@@ -2310,13 +2314,13 @@ Wenn Sie das Konto zu Cloud Manager hinzufügen, bezieht sich Cloud Manager auf 
 <div class="ulist">
 <ul>
 <li>
-<p>Anwendungs-ID: Siehe  the application ID and directory ID.</p>
+<p>Anwendungs-ID: Siehe <a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Abrufen der Anwendungs-ID und der Verzeichnis-ID</a>.</p>
 </li>
 <li>
-<p>Mandanten-ID (oder Verzeichnis-ID): Siehe  the application ID and directory ID.</p>
+<p>Mandanten-ID (oder Verzeichnis-ID): Siehe <a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Abrufen der Anwendungs-ID und der Verzeichnis-ID</a>.</p>
 </li>
 <li>
-<p>Anwendungsschlüssel (das Clientgeheimnis): Siehe  a client secret.</p>
+<p>Anwendungsschlüssel (das Clientgeheimnis): Siehe <a href="#erstellen-eines-clientgeheimnisses">Erstellen eines Clientgeheimnisses</a>.</p>
 </li>
 </ul>
 </div>
@@ -2327,6 +2331,7 @@ Wenn Sie das Konto zu Cloud Manager hinzufügen, bezieht sich Cloud Manager auf 
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Sie können jetzt auf der Seite Details und Anmeldeinformationen zu einem anderen Konto wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:</p>
 </div>
 <div class="paragraph">
@@ -2341,6 +2346,7 @@ Wenn Sie das Konto zu Cloud Manager hinzufügen, bezieht sich Cloud Manager auf 
 <p>Mit Cloud Manager können Sie das Azure Konto und das Abonnement auswählen, in dem Sie Cloud Volumes ONTAP implementieren möchten. Sie können kein anderes Azure-Abonnement für das verwaltete Identitätsprofil auswählen, es sei denn, Sie verknüpfen das <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">"Verwaltete Identität"</a> Mit diesen Abonnements.</p>
 </div>
 <div class="paragraph">
+<div class="title">Über diese Aufgabe</div>
 <p>Eine verwaltete Identität ist <a href="concept_accounts_azure.html">"Zunächst das Azure-Konto"</a> Wenn Sie Cloud Manager über NetApp Cloud Central implementieren. Bei der Implementierung von Cloud Manager erstellte Cloud Central die Rolle "OnCommand Cloud Manager Operator" und wies sie der virtuellen Cloud Manager-Maschine zu.</p>
 </div>
 <div class="olist arabic">
@@ -2399,6 +2405,7 @@ OnCommand Cloud Manager Operator ist der im angegebene Standardname <a href="htt
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Wenn Sie eine neue Arbeitsumgebung erstellen, sollten Sie nun über mehrere Azure-Abonnements für das verwaltete Identitätsprofil verfügen.</p>
 </div>
 <div class="paragraph">
