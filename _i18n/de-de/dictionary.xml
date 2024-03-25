@@ -69,14 +69,6 @@
   <block id="07d55193182697e6721a80930a82f737" category="doc">Frühere Versionen der Cloud Manager-Dokumentation</block>
   <block id="0bf65d2b559533c88cc79b3840d69e6d" category="inline-link">Cloud Manager 3.6</block>
   <block id="e53b2df33a1dac75704245860415ceff" category="list-text"><block ref="e53b2df33a1dac75704245860415ceff" category="inline-link-rx"></block></block>
-  <block id="ecc216112e51b5fcf9a16ded8dabf7d3" category="inline-link">Cloud Manager 3.5</block>
-  <block id="cfc918b9915ac614a17310f450bf2721" category="list-text"><block ref="cfc918b9915ac614a17310f450bf2721" category="inline-link-rx"></block></block>
-  <block id="e3d94d1f3408c8379bdf78d363454ce1" category="inline-link">Cloud Manager 3.4</block>
-  <block id="38de804ea38bf38231c886d96da268e7" category="list-text"><block ref="38de804ea38bf38231c886d96da268e7" category="inline-link-rx"></block></block>
-  <block id="071d13764bfb9458bd760c388f1767ba" category="inline-link">Cloud Manager 3.3</block>
-  <block id="16402a155f06e6eb36ecc0f5c23fe0c3" category="list-text"><block ref="16402a155f06e6eb36ecc0f5c23fe0c3" category="inline-link-rx"></block></block>
-  <block id="5762b1cbe884ee9e94cfac52c83c4e93" category="inline-link">Cloud Manager 3.2</block>
-  <block id="512d31465e67eb0eaa423ce8c234959e" category="list-text"><block ref="512d31465e67eb0eaa423ce8c234959e" category="inline-link-rx"></block></block>
   <block id="0b6e2ff3f54e08d0974d92f95f63ff71" category="summary">Standardmäßig verwendet Cloud Manager ein selbstsigniertes Zertifikat für den HTTPS-Zugriff auf die Webkonsole. Sie können ein Zertifikat installieren, das von einer Zertifizierungsstelle (CA) signiert wurde. Dies bietet einen besseren Sicherheitsschutz als ein selbstsigniertes Zertifikat.</block>
   <block id="e34a84bb6709c8ccbc99bb1b42abc7c5" category="doc">Installieren eines HTTPS-Zertifikats für sicheren Zugriff</block>
   <block id="648be652fd804743151fe43449a6cfc6" category="list-text">Klicken Sie oben rechts in der Cloud Manager-Konsole auf das Symbol Einstellungen und wählen Sie *HTTPS-Setup*.</block>
@@ -4382,4 +4374,8 @@
   <block id="d82f79a731e59f35df4d972176f21d86" category="section-title"><block ref="ee7780d13d268d291c14f07e87b1b8ae" category="inline-image-macro-rx" type="image"></block> Starten Sie Cloud Volumes ONTAP mit Cloud Manager</block>
   <block id="5ccc745272c52ce1868d5bcf2b07705a" category="section-title">Arbeitsbereiche eines Arbeitsbereichs-Administrators verwalten</block>
   <block id="d46c994bf0fc996e0688f4f3c54602cd" category="section-title">Verwalten der Arbeitsbereiche eines Service Connectors</block>
+  <block id="9b9477e579c3b44dd623d5a6e1ea8d78" category="section-title">BlueXP</block>
+  <block id="1514a9e798eb61fcbaf1fddb8eb82097" category="paragraph">NetApp BlueXP erweitert und verbessert die über Cloud Manager bereitgestellten Funktionen.</block>
+  <block id="ab226d70455b3dcdb3cf804792103d43" category="inline-link">Rufen Sie die BlueXP Dokumentation auf</block>
+  <block id="50523074a17d5fe93be8e3f013a747de" category="paragraph"><block ref="50523074a17d5fe93be8e3f013a747de" category="inline-link-rx"></block></block>
 </blocks>
